@@ -667,10 +667,248 @@ footer{background:linear-gradient(180deg,#03172f,#021125)}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
+
+
+.opening-enter{
+  position:absolute;
+  z-index:3;
+  bottom:34px;
+  left:50%;
+  transform:translateX(-50%);
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  padding:13px 22px;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:999px;
+  background:rgba(255,255,255,.07);
+  color:#fff;
+  font:inherit;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.2em;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:transform .3s ease, background .3s ease, border-color .3s ease;
+  animation:openingFadeUp .9s 1.15s both;
+}
+.opening-enter span{
+  font-size:18px;
+  line-height:0;
+  transition:transform .3s ease;
+}
+.opening-enter:hover{
+  transform:translateX(-50%) translateY(-3px);
+  background:rgba(255,255,255,.14);
+  border-color:rgba(255,255,255,.65);
+}
+.opening-enter:hover span{transform:translateX(4px)}
+.opening-enter:focus-visible{
+  outline:3px solid rgba(213,177,90,.7);
+  outline-offset:4px;
+}
+@media (max-width:700px){
+  .opening-enter{bottom:25px;padding:12px 18px}
+}
+@media (prefers-reduced-motion:reduce){
+  .opening-enter{animation:none !important;transition:none !important}
+}
+
+/* =========================================================
+   ALWAYS HIGHER — signature opening experience
+   ========================================================= */
+html{scroll-padding-top:90px}
+body.opening-active{overflow:hidden}
+
+.opening-screen{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(5,19,38,.98),rgba(10,31,55,.96)),
+    url("PILAR HSS (1).jpeg") center/cover no-repeat;
+  color:#fff;
+  transition:opacity .9s cubic-bezier(.22,1,.36,1), visibility .9s;
+}
+.opening-screen::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(5,19,38,.96) 0%,rgba(5,19,38,.74) 48%,rgba(5,19,38,.40) 100%);
+}
+.opening-screen::after{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border:1px solid rgba(255,255,255,.18);
+  pointer-events:none;
+}
+.opening-screen.is-leaving{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+.opening-glow{
+  position:absolute;
+  width:55vw;
+  height:55vw;
+  max-width:760px;
+  max-height:760px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(207,166,67,.17) 0%,rgba(207,166,67,.05) 34%,transparent 68%);
+  transform:translate(22%,-14%);
+  filter:blur(4px);
+  animation:openingGlow 5s ease-in-out infinite alternate;
+}
+.opening-content{
+  position:relative;
+  z-index:2;
+  width:min(1100px,88vw);
+  text-align:left;
+  transform:translateY(0);
+  animation:openingContent .9s .15s both cubic-bezier(.22,1,.36,1);
+}
+.opening-school{
+  font-size:clamp(18px,2vw,28px);
+  font-weight:800;
+  letter-spacing:.18em;
+}
+.opening-place{
+  margin-top:8px;
+  font-size:clamp(11px,1vw,14px);
+  letter-spacing:.42em;
+  color:rgba(255,255,255,.68);
+}
+.opening-rule{
+  width:72px;
+  height:2px;
+  margin:34px 0 30px;
+  background:var(--gold,#d5b15a);
+  transform-origin:left;
+  animation:openingRule .8s .55s both;
+}
+.opening-motto{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  line-height:.84;
+  font-size:clamp(64px,11vw,170px);
+  letter-spacing:-.055em;
+  font-weight:900;
+}
+.motto-always{
+  font-size:.34em;
+  letter-spacing:.22em;
+  margin-left:.08em;
+  margin-bottom:.18em;
+  color:rgba(255,255,255,.72);
+  animation:openingFadeUp .9s .35s both;
+}
+.motto-higher{
+  display:inline-block;
+  color:#fff;
+  text-shadow:0 10px 50px rgba(0,0,0,.25);
+  animation:higherLift 1.5s .55s both cubic-bezier(.16,1,.3,1);
+}
+.opening-subtitle{
+  margin-top:34px;
+  color:rgba(255,255,255,.72);
+  font-size:clamp(14px,1.5vw,19px);
+  letter-spacing:.03em;
+  animation:openingFadeUp .9s .9s both;
+}
+.opening-skip{
+  position:absolute;
+  z-index:2;
+  bottom:34px;
+  left:50%;
+  transform:translateX(-50%);
+  color:rgba(255,255,255,.56);
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  animation:openingPulse 1.8s ease-in-out infinite;
+}
+.opening-skip::after{
+  content:"";
+  display:block;
+  width:1px;
+  height:28px;
+  margin:10px auto 0;
+  background:linear-gradient(to bottom,rgba(255,255,255,.65),transparent);
+}
+
+@keyframes openingContent{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes openingFadeUp{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes openingRule{
+  from{transform:scaleX(0);opacity:0}
+  to{transform:scaleX(1);opacity:1}
+}
+@keyframes higherLift{
+  0%{opacity:0;transform:translateY(90px) scale(.94);filter:blur(10px)}
+  55%{opacity:1;transform:translateY(8px) scale(1.01);filter:blur(0)}
+  100%{opacity:1;transform:translateY(-8px) scale(1);filter:blur(0)}
+}
+@keyframes openingGlow{
+  from{transform:translate(22%,-14%) scale(.94);opacity:.7}
+  to{transform:translate(16%,-8%) scale(1.08);opacity:1}
+}
+@keyframes openingPulse{
+  0%,100%{opacity:.42}
+  50%{opacity:1}
+}
+
+@media (max-width:700px){
+  .opening-screen::after{inset:10px}
+  .opening-content{width:82vw}
+  .opening-school{letter-spacing:.13em}
+  .opening-place{letter-spacing:.27em}
+  .opening-rule{margin:27px 0 24px}
+  .opening-motto{font-size:clamp(58px,17vw,105px)}
+  .opening-subtitle{max-width:300px;line-height:1.5}
+  .opening-skip{bottom:22px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .opening-screen,.opening-content,.motto-always,.motto-higher,.opening-rule,
+  .opening-glow,.opening-subtitle,.opening-skip{
+    animation:none !important;
+    transition:none !important;
+  }
+}
+
 </style>
 </head>
 
 <body>
+
+<!-- Signature opening experience -->
+<div class="opening-screen" id="openingScreen" aria-label="Fr. Agnel Higher Secondary School">
+  <div class="opening-glow"></div>
+  <div class="opening-content">
+    <div class="opening-school">FR. AGNEL HSS</div>
+    <div class="opening-place">PILAR, GOA</div>
+    <div class="opening-rule"></div>
+    <h1 class="opening-motto" aria-label="Always Higher">
+      <span class="motto-always">ALWAYS</span>
+      <span class="motto-higher">HIGHER.</span>
+    </h1>
+    <div class="opening-subtitle">Learning with purpose. Growing with character.</div>
+  </div>
+</div>
+
+
 
 <div class="topbar">
     <div class="container">
@@ -1147,6 +1385,45 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 </script>
+
+
+```html
+<script>
+/* Always Higher opening sequence */
+(function(){
+  const screen = document.getElementById('openingScreen');
+  if(!screen) return;
+
+  document.body.classList.add('opening-active');
+
+  let closed = false;
+
+  const closeOpening = () => {
+    if(closed) return;
+    closed = true;
+
+    screen.classList.add('is-leaving');
+    document.body.classList.remove('opening-active');
+
+    setTimeout(() => {
+      screen.remove();
+    }, 1000);
+  };
+
+  // CLICK ANYWHERE on the opening screen to enter
+  screen.addEventListener('click', closeOpening);
+
+  // Keyboard support
+  window.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' ') {
+      closeOpening();
+    }
+  });
+
+})();
+</script>
+```
+
 
 </body>
 </html>
