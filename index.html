@@ -618,6 +618,31 @@ header{backdrop-filter:blur(12px);background:rgba(255,255,255,.96)}
 .academic-card h3{color:var(--navy);font-size:21px;margin:12px 0 8px}
 .academic-card p{color:var(--muted);font-size:14px}
 
+/* Detailed Academics */
+.academic-category{margin-top:55px}
+.academic-category-heading{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+.category-icon{width:58px;height:58px;border-radius:16px;background:#eef5fd;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.academic-category-heading h3{color:var(--navy);font-size:28px;margin-top:3px}
+.academic-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.detailed-card{min-height:auto;padding:30px}
+.detailed-card .icon{font-size:34px;margin-bottom:12px}
+.detailed-card h3{color:var(--navy);font-size:24px;margin-bottom:22px}
+.detailed-card h4{color:var(--blue);font-size:14px;margin:20px 0 8px;text-transform:uppercase;letter-spacing:.7px}
+.detailed-card ul{padding-left:20px;margin:0}
+.detailed-card li{color:var(--muted);margin-bottom:6px;line-height:1.5}
+.academic-note{margin-top:20px;padding:13px 16px;background:#fffaf0;border-left:4px solid var(--gold);border-radius:8px;color:var(--muted);font-size:14px}
+.training-note{margin-top:20px;padding:14px 16px;background:#eef7ff;border-left:4px solid var(--blue);border-radius:8px;color:var(--text);font-size:14px}
+.featured-academic{border-bottom:4px solid var(--gold)}
+.girls-only{display:inline-block;padding:6px 12px;background:#fff4f7;color:#a83b62;border-radius:30px;font-size:12px;font-weight:800;margin-bottom:10px}
+.syllabus-box{margin-top:65px;padding:35px;background:var(--navy);color:white;border-radius:22px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.syllabus-box h3{font-size:27px;margin:5px 0 8px}
+.syllabus-box p{color:#dce8f6;max-width:650px}
+.syllabus-buttons{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.syllabus-btn{border:2px solid rgba(255,255,255,.5);color:white;padding:12px 18px}
+.syllabus-btn:hover{background:white;color:var(--navy)}
+@media(max-width:850px){.academic-grid{grid-template-columns:1fr}.syllabus-box{flex-direction:column;align-items:flex-start}.syllabus-buttons{justify-content:flex-start}}
+@media(max-width:600px){.academic-category-heading h3{font-size:23px}.detailed-card{padding:22px}.detailed-card h3{font-size:21px}.syllabus-box{padding:25px}.syllabus-buttons{width:100%;flex-direction:column}.syllabus-buttons .btn{width:100%}}
+
 /* Gallery */
 .gallery-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr;grid-auto-rows:190px;gap:16px}
 .gallery-item{position:relative;border-radius:18px;overflow:hidden;background:#e8edf4}
@@ -736,9 +761,7 @@ body.opening-active{overflow:hidden}
   display:grid;
   place-items:center;
   overflow:hidden;
-  background:
-    linear-gradient(135deg,rgba(5,19,38,.98),rgba(10,31,55,.96)),
-    url("PILAR HSS (1).jpeg") center/cover no-repeat;
+  background:#03172f;
   color:#fff;
   transition:opacity .9s cubic-bezier(.22,1,.36,1), visibility .9s;
 }
@@ -896,6 +919,47 @@ body.opening-active{overflow:hidden}
   }
 }
 
+
+/* =========================================================
+   CLEAN POLISH + HOVER EFFECTS
+   ========================================================= */
+.btn,.card,.academic-card,.highlight,.footer-col a,.social a,.nav-links a{will-change:transform}
+.btn{position:relative;overflow:hidden}
+.btn::before{content:"";position:absolute;inset:0;transform:translateX(-110%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);transition:transform .55s ease}
+.btn:hover::before{transform:translateX(110%)}
+.btn:hover{box-shadow:0 12px 28px rgba(6,43,89,.18)}
+.card,.academic-card{transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+.card:hover,.academic-card:hover{transform:translateY(-8px);box-shadow:0 22px 50px rgba(6,43,89,.14)}
+.highlight{transition:transform .3s ease,background .3s ease,box-shadow .3s ease}
+.highlight:hover{transform:translateY(-5px);background:#fbfdff;box-shadow:inset 0 -3px 0 var(--gold)}
+.highlight .icon,.card .icon,.academic-card .icon{transition:transform .35s ease}
+.highlight:hover .icon,.card:hover .icon,.academic-card:hover .icon{transform:scale(1.12) rotate(-4deg)}
+.footer-col a:hover{color:var(--gold)!important;padding-left:5px}
+.social a{transition:transform .25s ease,background .25s ease,color .25s ease}
+.social a:hover{transform:translateY(-4px) scale(1.05);background:var(--gold);color:var(--navy2)}
+.brand:hover .logo{transform:rotate(-3deg) scale(1.04);box-shadow:0 8px 22px rgba(6,43,89,.15)}
+.logo{transition:transform .3s ease,box-shadow .3s ease}
+
+/* Opening background slideshow */
+.opening-bg{position:absolute;inset:0;z-index:-3;overflow:hidden}
+.opening-bg-slide{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;opacity:0;transform:scale(1.04);transition:opacity 1.1s ease,transform 6s ease}
+.opening-bg-slide.active{opacity:1;transform:scale(1)}
+.opening-bg-controls{position:absolute;z-index:4;right:34px;bottom:30px;display:flex;align-items:center;gap:12px}
+.opening-bg-arrow{width:42px;height:42px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(0,0,0,.22);backdrop-filter:blur(8px);color:#fff;font-size:18px;cursor:pointer;transition:.25s ease}
+.opening-bg-arrow:hover{background:var(--gold);color:var(--navy2);border-color:var(--gold);transform:translateY(-2px)}
+.opening-bg-dots{display:flex;gap:7px;align-items:center}
+.opening-bg-dot{width:7px;height:7px;border:0;border-radius:50%;padding:0;background:rgba(255,255,255,.4);cursor:pointer;transition:.25s ease}
+.opening-bg-dot.active{width:24px;border-radius:99px;background:var(--gold)}
+.opening-photo-label{position:absolute;z-index:3;left:34px;bottom:34px;color:rgba(255,255,255,.62);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+@media(max-width:700px){
+  .opening-bg-controls{right:22px;bottom:20px}
+  .opening-photo-label{left:22px;bottom:24px}
+  .opening-bg-arrow{width:36px;height:36px}
+}
+@media(prefers-reduced-motion:reduce){
+  .opening-bg-slide{transition:none}.card,.academic-card,.highlight,.btn,.social a{transition:none}
+}
+
 </style>
 </head>
 
@@ -903,7 +967,15 @@ body.opening-active{overflow:hidden}
 
 <!-- Signature opening experience -->
 <div class="opening-screen" id="openingScreen" aria-label="Fr. Agnel Higher Secondary School">
+  <div class="opening-bg" aria-hidden="true">
+    <div class="opening-bg-slide active" style="background-image:url('PILAR HSS (1).jpeg')"></div>
+    <div class="opening-bg-slide" style="background-image:url('images/photo2.jpg')"></div>
+    <div class="opening-bg-slide" style="background-image:url('images/photo3.jpg')"></div>
+    <div class="opening-bg-slide" style="background-image:url('images/photo4.jpg')"></div>
+  </div>
+
   <div class="opening-glow"></div>
+
   <div class="opening-content">
     <div class="opening-school">FR. AGNEL HSS</div>
     <div class="opening-place">PILAR, GOA</div>
@@ -913,6 +985,13 @@ body.opening-active{overflow:hidden}
       <span class="motto-higher">HIGHER.</span>
     </h1>
     <div class="opening-subtitle">Learning with purpose. Growing with character.</div>
+  </div>
+
+  <div class="opening-photo-label">School • Community • Excellence</div>
+  <div class="opening-bg-controls" aria-label="Opening background controls">
+    <button class="opening-bg-arrow" id="openingPrev" type="button" aria-label="Previous background">‹</button>
+    <div class="opening-bg-dots" id="openingDots"></div>
+    <button class="opening-bg-arrow" id="openingNext" type="button" aria-label="Next background">›</button>
   </div>
 </div>
 
@@ -1081,13 +1160,88 @@ body.opening-active{overflow:hidden}
     <div class="section-title">
       <span class="eyebrow">Learning Pathways</span>
       <h2>Academics</h2>
-      <p>Explore the learning environment and opportunities that help our students prepare for their next step.</p>
+      <p>Explore the academic and vocational courses offered at Fr. Agnel Higher Secondary School, Pilar.</p>
     </div>
-    <div class="cards">
-      <article class="academic-card"><div class="icon">🔬</div><h3>Science</h3><p>Build strong foundations through curiosity, practical learning and critical thinking.</p></article>
-      <article class="academic-card"><div class="icon">📊</div><h3>Commerce</h3><p>Develop an understanding of business, finance, economics and the world of enterprise.</p></article>
-      <article class="academic-card"><div class="icon">📚</div><h3>Arts</h3><p>Explore ideas, society, creativity and communication through a broad academic experience.</p></article>
-      <article class="academic-card"><div class="icon">💡</div><h3>Vocational Learning</h3><p>Connect learning with practical skills and opportunities for the future.</p></article>
+
+    <div class="academic-category">
+      <div class="academic-category-heading">
+        <span class="category-icon">🎓</span>
+        <div><span class="eyebrow">General Stream</span><h3>General Stream Courses</h3></div>
+      </div>
+      <div class="academic-grid">
+        <article class="academic-card detailed-card">
+          <div class="icon">📚</div><h3>Arts Stream</h3>
+          <h4>Compulsory Group</h4><ul><li>Language I: English</li><li>Language II: Hindi / Konkani</li></ul>
+          <h4>Stream Group</h4><ul><li>Economics / Secretarial Practice</li><li>Political Science</li><li>Psychology</li><li>History / Sociology</li></ul>
+          <h4>School Assessment Subjects</h4><ul><li>N.S.S</li><li>P.Ed</li><li>Computer Education Programme</li><li>Environmental Education</li></ul>
+          <p class="academic-note"><strong>Note:</strong> NSS Volunteers of Std XI will have to attend a 7-day camp during the vacation.</p>
+        </article>
+
+        <article class="academic-card detailed-card">
+          <div class="icon">📊</div><h3>Commerce Stream</h3>
+          <h4>Compulsory Group</h4><ul><li>Language I: English</li><li>Language II: Hindi / Konkani</li></ul>
+          <h4>Stream Group</h4><ul><li>Economics</li><li>Secretarial Practice</li><li>Accountancy</li><li>Business Studies</li></ul>
+          <h4>School Assessment Subjects</h4><ul><li>N.S.S</li><li>Computer Education Programme</li><li>P.Ed</li><li>Environmental Education</li></ul>
+        </article>
+
+        <article class="academic-card detailed-card">
+          <div class="icon">🔬</div><h3>Science Stream</h3>
+          <h4>Compulsory Group</h4><ul><li>Language I: English</li><li>Language II: Hindi / Konkani</li></ul>
+          <h4>Stream Group</h4><ul><li>Physics</li><li>Chemistry</li><li>Biology</li><li>Mathematics</li></ul>
+          <p class="academic-note">Mathematics is compulsory for XI and XII. Students may opt for Psychology in place of Mathematics.</p>
+          <h4>School Assessment Subjects</h4><ul><li>YRC</li><li>P.Ed</li><li>Computer Education Programme</li><li>Environmental Education</li></ul>
+        </article>
+      </div>
+    </div>
+
+    <div class="academic-category vocational-category">
+      <div class="academic-category-heading">
+        <span class="category-icon">💡</span>
+        <div><span class="eyebrow">Vocational Stream</span><h3>Vocational Stream Courses</h3></div>
+      </div>
+      <div class="academic-grid">
+        <article class="academic-card detailed-card">
+          <div class="icon">🚗</div><h3>Auto Engineering Technology</h3>
+          <h4>Compulsory Subjects</h4><ul><li>Communication Skill</li><li>General Foundation Course</li></ul>
+          <h4>Vocational Subjects</h4><ul><li>Auto Servicing and Garage</li><li>Automobile Engineering II</li><li>Auto Transmission</li><li>Auto Servicing and Garage</li></ul>
+          <h4>School Assessment</h4><ul><li>P.Ed</li><li>C.E.P</li><li>Environmental Education</li></ul>
+          <p class="training-note"><strong>On-the-job training:</strong> 45 days during vacation — XI Std, April to May.</p>
+        </article>
+
+        <article class="academic-card detailed-card featured-academic">
+          <div class="icon">💻</div><h3>Computer Technique</h3>
+          <h4>Compulsory Subjects</h4><ul><li>Communication Skill</li><li>General Foundation Course</li></ul>
+          <h4>Vocational Subjects</h4><ul><li>Mathematics (Vocational)</li><li>Computer Organisation &amp; Operating Systems</li><li>Computer Software Applications</li><li>Web Technology</li></ul>
+          <h4>School Assessment</h4><ul><li>P.Ed</li><li>C.E.P</li><li>Environmental Education</li></ul>
+          <p class="training-note"><strong>On-the-job training:</strong> 45 days during vacation — XI Std, April to May.</p>
+        </article>
+
+        <article class="academic-card detailed-card">
+          <div class="icon">🛡️</div><h3>Insurance</h3>
+          <h4>Compulsory Subjects</h4><ul><li>Communication Skill</li><li>General Foundation Course</li></ul>
+          <h4>Vocational Subjects</h4><ul><li>Life Insurance</li><li>General Insurance</li><li>Accountancy</li><li>Computer Application</li></ul>
+          <h4>School Assessment</h4><ul><li>P.Ed</li><li>C.E.P</li><li>Environmental Education</li></ul>
+          <p class="training-note"><strong>On-the-job training:</strong> 45 days during vacation — XI Std, April to May.</p>
+        </article>
+
+        <article class="academic-card detailed-card">
+          <div class="icon">🗂️</div><h3>Office Secretaryship &amp; Stenography</h3>
+          <div class="girls-only">For Girls Only</div>
+          <h4>Compulsory Subjects</h4><ul><li>Communication Skill</li><li>General Foundation Course</li></ul>
+          <h4>Vocational Subjects</h4><ul><li>Office Procedure &amp; Practice</li><li>Accountancy</li><li>Stenography</li><li>Computer Application</li></ul>
+          <h4>School Assessment Subjects</h4><ul><li>P.Ed</li><li>C.E.P</li><li>Environmental Education</li></ul>
+          <p class="training-note"><strong>On-the-job training:</strong> 45 days during vacation — XI Std, April to May.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="syllabus-box">
+      <div><span class="eyebrow">Official Information</span><h3>View the Official Syllabus</h3><p>Refer to the Goa Board of Secondary and Higher Secondary Education website for the latest syllabus and curriculum details.</p></div>
+      <div class="syllabus-buttons">
+        <a href="https://www.gbshse.gov.in/" target="_blank" rel="noopener" class="btn btn-primary">Goa Board Website ↗</a>
+        <a href="http://www.gbshse.gov.in/documents/CURR%20FOR%20XI%20&%20XII.pdf" target="_blank" rel="noopener" class="btn syllabus-btn">XI &amp; XII Curriculum PDF ↗</a>
+        <a href="http://www.gbshse.gov.in/documents/voc2011346.pdf" target="_blank" rel="noopener" class="btn syllabus-btn">Vocational Curriculum PDF ↗</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1273,8 +1427,8 @@ body.opening-active{overflow:hidden}
             <h4>Contact</h4>
             <ul>
                 <li>📍 Pilar, Goa, India</li>
-                <li>📞 +91 XXXXX XXXXX</li>
-                <li>✉️ school@example.com</li>
+                <li>📞 <a href="tel:+919423747736">9423747736</a></li>
+                <li>✉️ <a href="mailto:fahsspilar@gmail.com">fahsspilar@gmail.com</a></li>
             </ul>
         </div>
 
@@ -1401,7 +1555,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 </script>
 
 
-```html
 <script>
 /* Always Higher opening sequence */
 (function(){
@@ -1436,7 +1589,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 })();
 </script>
-```
 
 
 </body>
