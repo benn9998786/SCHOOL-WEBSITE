@@ -529,6 +529,144 @@ footer{background:#03172f;color:#d5dfeb}
     .footer-main{grid-template-columns:1fr}
     .stats{grid-template-columns:1fr 1fr}
 }
+
+/* ===== POLISHED VERSION — keeps your original content/assets ===== */
+:root{
+  --navy:#062b59;--navy2:#03172f;--blue:#0d5aa7;
+  --gold:#f4c400;--gold2:#ffe36b;--light:#f5f8fc;
+  --text:#263548;--muted:#687789;--white:#fff;
+  --shadow:0 18px 50px rgba(6,43,89,.12);--radius:20px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{overflow-x:hidden;background:#fff}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* Header */
+.topbar{background:linear-gradient(90deg,var(--navy2),var(--navy))}
+header{backdrop-filter:blur(12px);background:rgba(255,255,255,.96)}
+.navbar{min-height:82px}
+.logo{width:58px;height:58px;border:2px solid #edf2f8}
+.brand h1{font-size:17px}
+.nav-links a{position:relative}
+.nav-links a.active{background:transparent}
+.nav-links a.active::after,.nav-links a:hover::after{
+  content:"";position:absolute;left:12px;right:12px;bottom:4px;height:3px;
+  border-radius:99px;background:var(--gold)
+}
+.nav-links a:hover{background:#f7faff}
+
+/* Announcement */
+.announcement{box-shadow:0 3px 14px rgba(0,0,0,.08)}
+.ticker-content{animation-duration:26s}
+
+/* Hero */
+.hero{
+  min-height:620px;display:flex;align-items:center;position:relative;
+  isolation:isolate;overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(3,23,47,.96) 0%,rgba(6,43,89,.82) 52%,rgba(6,43,89,.25) 100%),
+    url("PILAR HSS (1).jpeg") center/cover no-repeat;
+}
+.hero::after{
+  content:"";position:absolute;left:-5%;right:-5%;bottom:-105px;height:170px;
+  background:#fff;transform:rotate(-2deg);z-index:-1
+}
+.hero-content{padding:90px 0 120px}
+.hero h2{max-width:760px;text-shadow:0 3px 18px rgba(0,0,0,.2)}
+.hero p{font-size:19px;line-height:1.75}
+.hero-buttons .btn{min-width:155px}
+
+/* Quick highlights */
+.quick-highlights{position:relative;margin-top:-55px;z-index:5}
+.highlight-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);background:#fff;
+  border-radius:18px;box-shadow:var(--shadow);overflow:hidden
+}
+.highlight{padding:24px 20px;text-align:center;border-right:1px solid #e8edf3}
+.highlight:last-child{border-right:0}
+.highlight .icon{margin:0 auto 10px;width:48px;height:48px}
+.highlight strong{display:block;color:var(--navy);font-size:16px}
+.highlight span{font-size:13px;color:var(--muted)}
+
+/* Sections/cards */
+.section{padding:90px 0}
+.section-title{margin-bottom:52px}
+.section-title h2{letter-spacing:-.7px}
+.card{border:1px solid #edf1f6;border-bottom:4px solid transparent}
+.card:hover{border-color:#e3eaf2;border-bottom-color:var(--gold)}
+.quote{background:#fffaf0;border-radius:0 12px 12px 0}
+
+/* Academics */
+.academics-section{background:#f7faff}
+.academic-card{
+  position:relative;overflow:hidden;background:#fff;border:1px solid #e7edf5;
+  border-radius:20px;padding:30px;min-height:205px;
+  box-shadow:0 8px 28px rgba(6,43,89,.06);transition:.3s
+}
+.academic-card::before{
+  content:"";position:absolute;top:0;left:0;width:100%;height:5px;background:var(--gold)
+}
+.academic-card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+.academic-card h3{color:var(--navy);font-size:21px;margin:12px 0 8px}
+.academic-card p{color:var(--muted);font-size:14px}
+
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr;grid-auto-rows:190px;gap:16px}
+.gallery-item{position:relative;border-radius:18px;overflow:hidden;background:#e8edf4}
+.gallery-item:first-child{grid-row:span 2}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:.55s}
+.gallery-item:hover img{transform:scale(1.06)}
+.gallery-label{
+  position:absolute;left:0;right:0;bottom:0;padding:35px 18px 16px;
+  color:#fff;font-weight:800;background:linear-gradient(transparent,rgba(0,0,0,.75))
+}
+
+/* CTA/footer */
+.cta{position:relative;overflow:hidden}
+.cta::before,.cta::after{
+  content:"";position:absolute;border:1px solid rgba(244,196,0,.25);border-radius:50%
+}
+.cta::before{width:380px;height:380px;right:-160px;top:-190px}
+.cta::after{width:260px;height:260px;left:-120px;bottom:-150px}
+.cta .container{position:relative;z-index:1}
+footer{background:linear-gradient(180deg,#03172f,#021125)}
+.footer-col a{transition:.2s}
+.copyright{background:rgba(0,0,0,.12)}
+
+/* Mobile */
+@media(max-width:980px){
+  .highlight-grid{grid-template-columns:repeat(2,1fr)}
+  .highlight{border-bottom:1px solid #e8edf3}
+  .highlight:nth-child(2){border-right:0}
+  .hero{min-height:570px}
+  .hero-content{padding:75px 0 110px}
+}
+@media(max-width:760px){
+  .hero{min-height:560px;background-position:60% center}
+  .hero h2{font-size:clamp(38px,10vw,52px)}
+  .hero p{font-size:16px}
+  .quick-highlights{margin-top:-35px}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
+  .gallery-item:first-child{grid-row:span 1;grid-column:span 2}
+}
+@media(max-width:540px){
+  .navbar{min-height:72px}.nav-links{top:72px}
+  .logo{width:50px;height:50px}
+  .brand h1{font-size:13px;max-width:190px}
+  .hero{min-height:530px}.hero-content{padding:60px 0 90px}
+  .hero-buttons{flex-direction:column;gap:10px}
+  .hero-buttons .btn{width:100%}.btn-light{margin-left:0}
+  .highlight{padding:20px 10px}
+  .highlight strong{font-size:14px}.highlight span{font-size:11px}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:210px}
+  .gallery-item:first-child{grid-column:auto}
+  .section{padding:68px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
 </style>
 </head>
 
@@ -559,7 +697,7 @@ footer{background:#03172f;color:#d5dfeb}
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#academics">Academics</a></li>
                 <li><a href="#admissions">Admissions</a></li>
-                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#gallery-showcase">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -582,6 +720,30 @@ footer{background:#03172f;color:#d5dfeb}
         </div>
     </div>
 </div>
+
+
+<section class="hero" id="home" aria-label="Welcome to Fr. Agnel Higher Secondary School">
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-badge">FR. AGNEL HIGHER SECONDARY SCHOOL • PILAR, GOA</span>
+      <h2>Learning Today.<br><span>Leading Tomorrow.</span></h2>
+      <p>Inspiring minds, nurturing values and helping every student grow with confidence, character and purpose.</p>
+      <div class="hero-buttons">
+        <a href="#about" class="btn btn-primary">Discover Our School</a>
+        <a href="#admissions" class="btn btn-light">Admissions 2026–27</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quick-highlights" aria-label="School highlights">
+  <div class="container highlight-grid">
+    <div class="highlight"><div class="icon">🎓</div><strong>Academic Excellence</strong><span>Learn, question and grow</span></div>
+    <div class="highlight"><div class="icon">🌱</div><strong>Holistic Development</strong><span>Mind, character and confidence</span></div>
+    <div class="highlight"><div class="icon">🏆</div><strong>Sports & Culture</strong><span>Discover talents beyond class</span></div>
+    <div class="highlight"><div class="icon">🤝</div><strong>Character & Service</strong><span>Growing responsible citizens</span></div>
+  </div>
+</section>
 
 <div class="slider" id="slider">
   <div class="slides" id="slides">
@@ -667,7 +829,24 @@ footer{background:#03172f;color:#d5dfeb}
     </div>
 </section>
 
-<section class="section values" id="academics">
+
+<section class="section academics-section" id="academics">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Learning Pathways</span>
+      <h2>Academics</h2>
+      <p>Explore the learning environment and opportunities that help our students prepare for their next step.</p>
+    </div>
+    <div class="cards">
+      <article class="academic-card"><div class="icon">🔬</div><h3>Science</h3><p>Build strong foundations through curiosity, practical learning and critical thinking.</p></article>
+      <article class="academic-card"><div class="icon">📊</div><h3>Commerce</h3><p>Develop an understanding of business, finance, economics and the world of enterprise.</p></article>
+      <article class="academic-card"><div class="icon">📚</div><h3>Arts</h3><p>Explore ideas, society, creativity and communication through a broad academic experience.</p></article>
+      <article class="academic-card"><div class="icon">💡</div><h3>Vocational Learning</h3><p>Connect learning with practical skills and opportunities for the future.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section values" id="values">
     <div class="container">
         <div class="section-title">
             <span class="eyebrow">What We Believe In</span>
@@ -726,7 +905,7 @@ footer{background:#03172f;color:#d5dfeb}
     </div>
 </section>
 
-<section class="section staff-section" id="gallery">
+<section class="section staff-section" id="community">
     <div class="container">
         <div class="section-title">
             <span class="eyebrow">Our School Community</span>
@@ -787,6 +966,23 @@ footer{background:#03172f;color:#d5dfeb}
     </div>
 </section>
 
+
+<section class="section" id="gallery-showcase">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Life at Fr. Agnel</span>
+      <h2>Moments That Matter</h2>
+      <p>A glimpse of learning, participation and the experiences that make school life memorable.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="PILAR HSS (1).jpeg" alt="Students learning at Fr. Agnel Higher Secondary School"><div class="gallery-label">Learning Together</div></div>
+      <div class="gallery-item"><img src="images/photo2.jpg" alt="School library"><div class="gallery-label">Read & Explore</div></div>
+      <div class="gallery-item"><img src="images/photo3.jpg" alt="Students participating in sports"><div class="gallery-label">Sports & Teamwork</div></div>
+      <div class="gallery-item"><img src="images/photo4.jpg" alt="School graduation ceremony"><div class="gallery-label">Celebrating Achievement</div></div>
+    </div>
+  </div>
+</section>
+
 <section class="section cta" id="admissions">
     <div class="container">
         <h2>Admissions Open 2026–2027</h2>
@@ -823,7 +1019,7 @@ footer{background:#03172f;color:#d5dfeb}
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#academics">Academics</a></li>
                 <li><a href="#admissions">Admissions</a></li>
-                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#gallery-showcase">Gallery</a></li>
             </ul>
         </div>
 
@@ -915,7 +1111,7 @@ const navLinks = document.getElementById("navLinks");
 
 menuToggle.addEventListener("click", () => {
     navLinks.classList.toggle("show");
-    menuToggle.textContent = navLinks.classList.contains("show") ? "✕" : "☰";
+    const open = navLinks.classList.contains("show"); menuToggle.textContent = open ? "✕" : "☰"; menuToggle.setAttribute("aria-expanded", open);
 });
 
 document.querySelectorAll(".nav-links a").forEach(link => {
