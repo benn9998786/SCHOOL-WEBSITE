@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Fr. Agnel Higher Secondary School, Pilar - Inspiring minds, building futures.">
 <title>Fr. Agnel Higher Secondary School, Pilar</title>
-<link rel="icon" type="image/png" href="unnamed.png">
+<link rel="icon" type="image/png" href="images/logo.png">
 
 
 
@@ -573,7 +573,7 @@ header{backdrop-filter:blur(12px);background:rgba(255,255,255,.96)}
   isolation:isolate;overflow:hidden;
   background:
     linear-gradient(90deg,rgba(3,23,47,.96) 0%,rgba(6,43,89,.82) 52%,rgba(6,43,89,.25) 100%),
-    url("PILAR HSS (1).jpeg") center/cover no-repeat;
+    url("images/pilar-hss-1-jpeg.jpg") center/cover no-repeat;
 }
 .hero::after{
   content:"";position:absolute;left:-5%;right:-5%;bottom:-105px;height:170px;
@@ -702,224 +702,6 @@ footer{background:linear-gradient(180deg,#03172f,#021125)}
 
 
 
-.opening-enter{
-  position:absolute;
-  z-index:3;
-  bottom:34px;
-  left:50%;
-  transform:translateX(-50%);
-  display:inline-flex;
-  align-items:center;
-  gap:14px;
-  padding:13px 22px;
-  border:1px solid rgba(255,255,255,.35);
-  border-radius:999px;
-  background:rgba(255,255,255,.07);
-  color:#fff;
-  font:inherit;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.2em;
-  cursor:pointer;
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  transition:transform .3s ease, background .3s ease, border-color .3s ease;
-  animation:openingFadeUp .9s 1.15s both;
-}
-.opening-enter span{
-  font-size:18px;
-  line-height:0;
-  transition:transform .3s ease;
-}
-.opening-enter:hover{
-  transform:translateX(-50%) translateY(-3px);
-  background:rgba(255,255,255,.14);
-  border-color:rgba(255,255,255,.65);
-}
-.opening-enter:hover span{transform:translateX(4px)}
-.opening-enter:focus-visible{
-  outline:3px solid rgba(213,177,90,.7);
-  outline-offset:4px;
-}
-@media (max-width:700px){
-  .opening-enter{bottom:25px;padding:12px 18px}
-}
-@media (prefers-reduced-motion:reduce){
-  .opening-enter{animation:none !important;transition:none !important}
-}
-
-/* =========================================================
-   ALWAYS HIGHER — signature opening experience
-   ========================================================= */
-html{scroll-padding-top:90px}
-body.opening-active{overflow:hidden}
-
-.opening-screen{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-  background:#03172f;
-  color:#fff;
-  transition:opacity .9s cubic-bezier(.22,1,.36,1), visibility .9s;
-}
-.opening-screen::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(90deg,rgba(5,19,38,.96) 0%,rgba(5,19,38,.74) 48%,rgba(5,19,38,.40) 100%);
-}
-.opening-screen::after{
-  content:"";
-  position:absolute;
-  inset:18px;
-  border:1px solid rgba(255,255,255,.18);
-  pointer-events:none;
-}
-.opening-screen.is-leaving{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-}
-.opening-glow{
-  position:absolute;
-  width:55vw;
-  height:55vw;
-  max-width:760px;
-  max-height:760px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(207,166,67,.17) 0%,rgba(207,166,67,.05) 34%,transparent 68%);
-  transform:translate(22%,-14%);
-  filter:blur(4px);
-  animation:openingGlow 5s ease-in-out infinite alternate;
-}
-.opening-content{
-  position:relative;
-  z-index:2;
-  width:min(1100px,88vw);
-  text-align:left;
-  transform:translateY(0);
-  animation:openingContent .9s .15s both cubic-bezier(.22,1,.36,1);
-}
-.opening-school{
-  font-size:clamp(18px,2vw,28px);
-  font-weight:800;
-  letter-spacing:.18em;
-}
-.opening-place{
-  margin-top:8px;
-  font-size:clamp(11px,1vw,14px);
-  letter-spacing:.42em;
-  color:rgba(255,255,255,.68);
-}
-.opening-rule{
-  width:72px;
-  height:2px;
-  margin:34px 0 30px;
-  background:var(--gold,#d5b15a);
-  transform-origin:left;
-  animation:openingRule .8s .55s both;
-}
-.opening-motto{
-  margin:0;
-  display:flex;
-  flex-direction:column;
-  line-height:.84;
-  font-size:clamp(64px,11vw,170px);
-  letter-spacing:-.055em;
-  font-weight:900;
-}
-.motto-always{
-  font-size:.34em;
-  letter-spacing:.22em;
-  margin-left:.08em;
-  margin-bottom:.18em;
-  color:rgba(255,255,255,.72);
-  animation:openingFadeUp .9s .35s both;
-}
-.motto-higher{
-  display:inline-block;
-  color:#fff;
-  text-shadow:0 10px 50px rgba(0,0,0,.25);
-  animation:higherLift 1.5s .55s both cubic-bezier(.16,1,.3,1);
-}
-.opening-subtitle{
-  margin-top:34px;
-  color:rgba(255,255,255,.72);
-  font-size:clamp(14px,1.5vw,19px);
-  letter-spacing:.03em;
-  animation:openingFadeUp .9s .9s both;
-}
-.opening-skip{
-  position:absolute;
-  z-index:2;
-  bottom:34px;
-  left:50%;
-  transform:translateX(-50%);
-  color:rgba(255,255,255,.56);
-  font-size:11px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  animation:openingPulse 1.8s ease-in-out infinite;
-}
-.opening-skip::after{
-  content:"";
-  display:block;
-  width:1px;
-  height:28px;
-  margin:10px auto 0;
-  background:linear-gradient(to bottom,rgba(255,255,255,.65),transparent);
-}
-
-@keyframes openingContent{
-  from{opacity:0;transform:translateY(22px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes openingFadeUp{
-  from{opacity:0;transform:translateY(18px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes openingRule{
-  from{transform:scaleX(0);opacity:0}
-  to{transform:scaleX(1);opacity:1}
-}
-@keyframes higherLift{
-  0%{opacity:0;transform:translateY(90px) scale(.94);filter:blur(10px)}
-  55%{opacity:1;transform:translateY(8px) scale(1.01);filter:blur(0)}
-  100%{opacity:1;transform:translateY(-8px) scale(1);filter:blur(0)}
-}
-@keyframes openingGlow{
-  from{transform:translate(22%,-14%) scale(.94);opacity:.7}
-  to{transform:translate(16%,-8%) scale(1.08);opacity:1}
-}
-@keyframes openingPulse{
-  0%,100%{opacity:.42}
-  50%{opacity:1}
-}
-
-@media (max-width:700px){
-  .opening-screen::after{inset:10px}
-  .opening-content{width:82vw}
-  .opening-school{letter-spacing:.13em}
-  .opening-place{letter-spacing:.27em}
-  .opening-rule{margin:27px 0 24px}
-  .opening-motto{font-size:clamp(58px,17vw,105px)}
-  .opening-subtitle{max-width:300px;line-height:1.5}
-  .opening-skip{bottom:22px}
-}
-
-@media (prefers-reduced-motion:reduce){
-  .opening-screen,.opening-content,.motto-always,.motto-higher,.opening-rule,
-  .opening-glow,.opening-subtitle,.opening-skip{
-    animation:none !important;
-    transition:none !important;
-  }
-}
-
-
 /* =========================================================
    CLEAN POLISH + HOVER EFFECTS
    ========================================================= */
@@ -940,24 +722,284 @@ body.opening-active{overflow:hidden}
 .brand:hover .logo{transform:rotate(-3deg) scale(1.04);box-shadow:0 8px 22px rgba(6,43,89,.15)}
 .logo{transition:transform .3s ease,box-shadow .3s ease}
 
-/* Opening background slideshow */
-.opening-bg{position:absolute;inset:0;z-index:-3;overflow:hidden}
-.opening-bg-slide{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;opacity:0;transform:scale(1.04);transition:opacity 1.1s ease,transform 6s ease}
-.opening-bg-slide.active{opacity:1;transform:scale(1)}
-.opening-bg-controls{position:absolute;z-index:4;right:34px;bottom:30px;display:flex;align-items:center;gap:12px}
-.opening-bg-arrow{width:42px;height:42px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(0,0,0,.22);backdrop-filter:blur(8px);color:#fff;font-size:18px;cursor:pointer;transition:.25s ease}
-.opening-bg-arrow:hover{background:var(--gold);color:var(--navy2);border-color:var(--gold);transform:translateY(-2px)}
-.opening-bg-dots{display:flex;gap:7px;align-items:center}
-.opening-bg-dot{width:7px;height:7px;border:0;border-radius:50%;padding:0;background:rgba(255,255,255,.4);cursor:pointer;transition:.25s ease}
-.opening-bg-dot.active{width:24px;border-radius:99px;background:var(--gold)}
-.opening-photo-label{position:absolute;z-index:3;left:34px;bottom:34px;color:rgba(255,255,255,.62);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
-@media(max-width:700px){
-  .opening-bg-controls{right:22px;bottom:20px}
-  .opening-photo-label{left:22px;bottom:24px}
-  .opening-bg-arrow{width:36px;height:36px}
+@media(prefers-reduced-motion:reduce){
+  .card,.academic-card,.highlight,.btn,.social a{transition:none}
+}
+
+/* =========================================================
+   HERITAGE SECTIONS + MOTION LAYER
+   ========================================================= */
+
+.nav-links a{white-space:nowrap}
+@media(min-width:981px) and (max-width:1180px){.nav-links a{padding:10px 8px;font-size:13px}.brand h1{font-size:15px}}
+
+/* Scroll progress + back to top */
+.scroll-progress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:2000;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--gold),var(--blue));pointer-events:none}
+.to-top{position:fixed;right:22px;bottom:22px;z-index:1500;width:50px;height:50px;border:0;border-radius:50%;background:var(--navy);color:var(--gold);font-size:20px;font-weight:900;cursor:pointer;box-shadow:0 12px 30px rgba(6,43,89,.3);opacity:0;translate:0 20px;pointer-events:none;transition:opacity .3s,translate .3s,background .25s}
+.to-top.show{opacity:1;translate:0 0;pointer-events:auto}
+.to-top:hover{background:var(--gold);color:var(--navy2)}
+
+/* Scroll reveal */
+.reveal{opacity:0}
+.reveal.is-visible{animation:revealUp .9s var(--rd,0s) cubic-bezier(.22,1,.36,1) both}
+@keyframes revealUp{from{opacity:0;translate:0 36px}to{opacity:1;translate:0 0}}
+
+/* Cursor spotlight on cards */
+.spot{position:relative;overflow:hidden}
+.spot::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(244,196,0,.16),transparent 62%);opacity:0;transition:opacity .3s}
+.spot:hover::after{opacity:1}
+
+/* Hero graphics */
+.hero .container{position:relative;z-index:1}
+.hero-canvas{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.hero h2 span{background:linear-gradient(90deg,var(--gold) 0%,#fff3b0 25%,var(--gold) 50%,#fff3b0 75%,var(--gold) 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 5s linear infinite}
+@keyframes shimmer{to{background-position:-200% center}}
+.spin-seal .seal-spin{transform-origin:100px 100px;animation:sealSpin 26s linear infinite}
+@keyframes sealSpin{to{transform:rotate(360deg)}}
+.hero-seal{position:absolute;right:7%;top:44%;width:200px;height:200px;translate:0 -50%;z-index:1;filter:drop-shadow(0 18px 40px rgba(0,0,0,.35));animation:sealFloat 6s ease-in-out infinite}
+@keyframes sealFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+/* Timeline */
+.history-section{background:#fff}
+.timeline{position:relative;max-width:1000px;margin:0 auto}
+.timeline-line{position:absolute;left:50%;top:0;bottom:0;width:4px;translate:-50% 0;background:#e6ecf4;border-radius:4px;overflow:hidden}
+.timeline-progress{position:absolute;left:0;right:0;top:0;height:var(--progress,0%);background:linear-gradient(var(--gold),var(--blue));border-radius:4px}
+.timeline-item{position:relative;width:50%;padding:0 48px 44px}
+.timeline-item.left{margin-right:auto;text-align:right}
+.timeline-item.right{margin-left:auto}
+.timeline-dot{position:absolute;top:26px;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid #cfd9e6;transition:border-color .4s,box-shadow .4s,transform .4s}
+.timeline-item.left .timeline-dot{right:-11px}
+.timeline-item.right .timeline-dot{left:-11px}
+.timeline-item.passed .timeline-dot{border-color:var(--gold);box-shadow:0 0 0 7px rgba(244,196,0,.2);transform:scale(1.1)}
+.timeline-card{background:#fff;border:1px solid #e7edf5;border-radius:20px;padding:26px 28px;box-shadow:0 10px 30px rgba(6,43,89,.07);transition:transform .35s,box-shadow .35s}
+.timeline-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.timeline-year{display:inline-block;font-size:28px;font-weight:900;line-height:1.1;background:linear-gradient(90deg,var(--navy),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+.timeline-card h3{color:var(--navy);margin:6px 0 8px;font-size:19px}
+.timeline-card p{color:var(--muted);font-size:15px}
+
+.leaders{margin-top:70px}
+.small-title{margin-bottom:34px}
+.small-title h2{font-size:clamp(26px,3vw,34px)}
+.leader-track{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.leader{position:relative;overflow:hidden;background:linear-gradient(160deg,#fff,#f6f9fd);border:1px solid #e7edf5;border-radius:18px;padding:22px 22px 20px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.leader:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(244,196,0,.6)}
+.leader .num{position:absolute;right:14px;top:2px;font-size:52px;font-weight:900;color:rgba(6,43,89,.06);line-height:1.2}
+.leader strong{display:block;color:var(--navy);font-size:15px;line-height:1.35;margin-bottom:8px;padding-right:30px}
+.leader span{font-size:13px;color:var(--blue);font-weight:800}
+.leader em{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:30px;background:var(--gold);color:var(--navy2);font-size:11px;font-style:normal;font-weight:800}
+
+/* Vision */
+.vision-section{position:relative;overflow:hidden;isolation:isolate;background:var(--navy2);color:#fff;padding-top:130px}
+.wave-top{position:absolute;top:-1px;left:0;width:200%;height:60px;fill:#fff;animation:waveMove 14s linear infinite}
+@keyframes waveMove{to{transform:translateX(-50%)}}
+.blob{position:absolute;z-index:-1;border-radius:50%;filter:blur(70px);opacity:.38;animation:blobFloat 14s ease-in-out infinite alternate}
+.blob.b1{width:440px;height:440px;background:var(--blue);top:-80px;left:-120px}
+.blob.b2{width:380px;height:380px;background:#b68a00;bottom:-150px;right:-80px;animation-delay:-6s}
+@keyframes blobFloat{to{transform:translate(70px,40px) scale(1.18)}}
+.vision-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:50px;align-items:start}
+.vision-section h2{font-size:clamp(30px,4vw,44px);line-height:1.15;margin:7px 0 28px}
+.vision-list{display:grid;gap:14px}
+.vision-item{display:flex;gap:18px;align-items:flex-start;padding:20px 22px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.04);backdrop-filter:blur(6px);transition:background .3s,border-color .3s,transform .3s}
+.vision-item:hover{background:rgba(255,255,255,.08);border-color:rgba(244,196,0,.5);transform:translateX(6px)}
+.vision-num{min-width:36px;font-size:22px;font-weight:900;color:var(--gold)}
+.vision-item p{color:#d3dfee}
+.vision-item strong{color:#fff}
+.statute-card{position:sticky;top:120px;padding:32px;border-radius:22px;border:1px solid rgba(244,196,0,.38);background:linear-gradient(160deg,rgba(244,196,0,.16),rgba(255,255,255,.03))}
+.statute-card h3{color:var(--gold);font-size:24px;margin-bottom:18px}
+.statute-card ul{list-style:none;display:grid;gap:14px}
+.statute-card li{position:relative;padding-left:30px;color:#dce7f4;font-size:15px}
+.statute-card li::before{content:"✓";position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;background:var(--gold);color:var(--navy2);font-size:12px;font-weight:900;display:grid;place-items:center}
+.motto-mark{margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);font-size:13px;font-weight:800;letter-spacing:.35em;color:rgba(255,255,255,.6)}
+.motto-mark span{display:block;font-size:44px;letter-spacing:-.02em;color:#fff;line-height:1}
+
+/* Patron */
+.patron-section{background:linear-gradient(180deg,#fffdf4,#fff)}
+.patron-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}
+.patron-frame{position:relative;width:min(360px,100%);aspect-ratio:2/3;margin:auto}
+.patron-frame::before{content:"";position:absolute;inset:-16px;border:2px solid rgba(182,138,0,.35);border-radius:220px 220px 34px 34px;animation:framePulse 4s ease-in-out infinite}
+@keyframes framePulse{0%,100%{inset:-16px;opacity:.5}50%{inset:-24px;opacity:1}}
+.patron-frame img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;border-radius:200px 200px 24px 24px;box-shadow:var(--shadow)}
+.patron-monogram{display:none}
+.patron-frame.no-img img{display:none}
+.patron-frame.no-img .patron-monogram{display:grid;place-items:center;position:absolute;inset:0;border-radius:200px 200px 24px 24px;background:linear-gradient(160deg,var(--navy),var(--blue));color:var(--gold);font-size:90px;font-weight:900}
+.patron-seal{position:absolute;z-index:2;right:-38px;bottom:30px;width:130px;height:130px;filter:drop-shadow(0 12px 26px rgba(6,43,89,.35))}
+.patron-copy h2{color:var(--navy);font-size:clamp(30px,4vw,42px);margin:7px 0 16px}
+.patron-copy > p{color:var(--muted);margin-bottom:12px}
+.patron-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0}
+.fact{background:#fff;border:1px solid #efe5c4;border-radius:14px;padding:14px 16px;transition:transform .3s,box-shadow .3s}
+.fact:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(182,138,0,.15)}
+.fact b{display:block;color:var(--navy);font-size:17px}
+.fact span{font-size:13px;color:var(--muted)}
+.sayings{position:relative;overflow:hidden;min-height:200px;padding:34px 32px 60px;border-radius:20px;background:var(--navy);color:#fff}
+.sayings::before{content:"“";position:absolute;top:-38px;left:12px;font-family:Georgia,serif;font-size:170px;color:rgba(244,196,0,.22);line-height:1}
+.saying{position:absolute;left:32px;right:32px;top:38px;opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s;font-family:Georgia,serif;font-size:20px;font-style:italic;line-height:1.5}
+.saying.active{opacity:1;transform:none}
+.sayings-foot{position:absolute;left:32px;right:32px;bottom:18px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.sayings-dots{display:flex;gap:6px}
+.sayings-dots button{width:7px;height:7px;padding:0;border:0;border-radius:99px;background:rgba(255,255,255,.35);cursor:pointer;transition:.3s}
+.sayings-dots button.active{width:22px;background:var(--gold)}
+
+/* Prayer */
+.prayer-section{background:var(--light)}
+.prayer-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.prayer-card{position:relative;overflow:hidden;background:#fff;border-radius:22px;padding:40px 34px;text-align:center;border-top:5px solid var(--gold);box-shadow:0 10px 30px rgba(6,43,89,.07);transition:transform .35s,box-shadow .35s}
+.prayer-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.prayer-card .icon{margin:0 auto 14px}
+.prayer-card h3{color:var(--navy);font-size:24px;margin-bottom:16px}
+.prayer-text{font-family:Georgia,serif;font-style:italic;font-size:17px;line-height:1.9;color:#3d4c5f;margin-bottom:14px}
+.chorus{padding:14px;border-radius:12px;background:#fffaf0}
+.chorus strong{font-family:"Segoe UI",Arial,sans-serif;font-style:normal;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#b68a00}
+
+/* Visit */
+.visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch}
+.visit-cards{display:grid;gap:14px}
+.visit-card{display:flex;gap:16px;align-items:flex-start;padding:20px 22px;background:#fff;border:1px solid #e7edf5;border-radius:18px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.visit-card:hover{transform:translateX(6px);box-shadow:var(--shadow);border-color:rgba(244,196,0,.6)}
+.visit-card .icon{margin:0;flex-shrink:0;width:50px;height:50px;font-size:22px}
+.visit-card strong{color:var(--navy);display:block;margin-bottom:3px}
+.visit-card p{color:var(--muted);font-size:14px}
+.visit-card a:hover{color:var(--blue)}
+.map-wrap{min-height:380px;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:#e8edf4}
+.map-wrap iframe{display:block;width:100%;height:100%;min-height:380px;border:0}
+
+/* Gallery lightbox */
+.gallery-item{cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;padding:20px;background:rgba(3,15,32,.93);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.lightbox.open{opacity:1;visibility:visible}
+.lightbox figure{margin:0;text-align:center}
+.lightbox img{max-width:92vw;max-height:80vh;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.5);transform:scale(.9);transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.lightbox.open img{transform:none}
+.lightbox figcaption{margin-top:14px;color:#fff;font-weight:800}
+.lightbox-close{position:absolute;top:18px;right:20px;width:46px;height:46px;border:1px solid rgba(255,255,255,.3);border-radius:50%;background:transparent;color:#fff;font-size:22px;cursor:pointer}
+.lightbox-close:hover{background:var(--gold);color:var(--navy2)}
+
+/* Responsive */
+@media(max-width:1100px){.hero-seal{width:160px;height:160px;right:4%}}
+@media(max-width:900px){
+  .hero-seal{display:none}
+  .vision-grid,.patron-grid,.visit-grid,.prayer-grid{grid-template-columns:1fr}
+  .statute-card{position:static}
+  .patron-seal{right:-10px}
+}
+@media(max-width:760px){
+  .timeline-line{left:11px;translate:0 0}
+  .timeline-item,.timeline-item.left,.timeline-item.right{width:100%;margin:0;padding:0 0 30px 44px;text-align:left}
+  .timeline-item.left .timeline-dot,.timeline-item.right .timeline-dot{left:0;right:auto}
+  .vision-section{padding-top:100px}
+  .saying{font-size:17px}
+  .sayings{min-height:240px}
+}
+@media(max-width:540px){
+  .patron-facts{grid-template-columns:1fr 1fr}
+  .prayer-card{padding:32px 22px}
+  .to-top{right:16px;bottom:16px;width:44px;height:44px}
 }
 @media(prefers-reduced-motion:reduce){
-  .opening-bg-slide{transition:none}.card,.academic-card,.highlight,.btn,.social a{transition:none}
+  .reveal{opacity:1}
+  .hero h2 span,.spin-seal .seal-spin,.hero-seal,.wave-top,.blob,.patron-frame::before{animation:none}
+}
+
+/* =========================================================
+   PHOTOS: cards, timeline, gallery, campus banner
+   ========================================================= */
+.timeline-img{display:block;width:100%;height:170px;object-fit:cover;border-radius:14px;margin-bottom:16px;transition:filter .4s}
+.timeline-card:hover .timeline-img{filter:saturate(1.15) brightness(1.05)}
+
+.detailed-card{--pad:30px;padding:var(--pad)}
+.course-img{display:block;width:calc(100% + 2 * var(--pad));max-width:none;height:180px;object-fit:cover;margin:calc(-1 * var(--pad)) calc(-1 * var(--pad)) 0;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.academic-card:hover .course-img{transform:scale(1.06)}
+.course-img + .icon{position:relative;z-index:1;margin-top:-29px;background:#fff;box-shadow:0 8px 22px rgba(6,43,89,.16)}
+
+.prayer-img{display:block;width:calc(100% + 68px);max-width:none;height:210px;object-fit:cover;margin:-40px -34px 0;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.prayer-card:hover .prayer-img{transform:scale(1.05)}
+.prayer-img + .icon{position:relative;z-index:1;margin:-29px auto 14px;background:#fff;box-shadow:0 8px 22px rgba(6,43,89,.16)}
+
+.vision-section::before{content:"";position:absolute;inset:0;z-index:-2;background:url("images/pilar-hss-2-jpg.jpg") center/cover no-repeat;opacity:.1;filter:grayscale(.4)}
+
+.campus-banner{position:relative;height:320px;margin:0 0 28px;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:#e8edf4}
+.campus-banner img{position:absolute;left:0;top:-15%;width:100%;height:130%;max-width:none;object-fit:cover;object-position:center 8%;transform:translateY(var(--py,0px));will-change:transform}
+.campus-banner figcaption{position:absolute;left:0;right:0;bottom:0;padding:70px 28px 22px;color:#fff;font-size:clamp(18px,2.4vw,26px);font-weight:800;background:linear-gradient(transparent,rgba(3,23,47,.88))}
+.campus-banner figcaption span{display:block;margin-bottom:4px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+
+.gallery-filters{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:-22px 0 30px}
+.gallery-filters button{padding:9px 20px;border:1px solid #dbe4ef;border-radius:99px;background:#fff;color:var(--navy);font:inherit;font-size:14px;font-weight:800;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s}
+.gallery-filters button:hover{border-color:var(--gold);transform:translateY(-2px)}
+.gallery-filters button.active{background:var(--navy);border-color:var(--navy);color:#fff}
+#gallery-showcase .gallery-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;grid-auto-flow:dense}
+#gallery-showcase .gallery-item{grid-row:auto;grid-column:auto}
+#gallery-showcase .gallery-item.big{grid-column:span 2;grid-row:span 2}
+#gallery-showcase .gallery-item.wide{grid-column:span 2}
+#gallery-showcase .gallery-item.tall{grid-row:span 2}
+#gallery-showcase .gallery-item.hide{display:none}
+#gallery-showcase .gallery-item.pop{animation:galleryPop .5s cubic-bezier(.22,1,.36,1) both}
+@keyframes galleryPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+.gallery-label{transition:padding .35s}
+.gallery-item:hover .gallery-label{padding-bottom:22px}
+
+@media(max-width:900px){#gallery-showcase .gallery-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){
+  #gallery-showcase .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .campus-banner{height:220px}
+}
+@media(max-width:600px){
+  .detailed-card{--pad:22px}
+  .prayer-img{width:calc(100% + 44px);margin:-32px -22px 0;height:180px}
+}
+@media(max-width:540px){
+  #gallery-showcase .gallery-item.tall{grid-row:span 1}
+}
+
+/* =========================================================
+   LOGO PRELOADER
+   ========================================================= */
+body.is-loading{overflow:hidden}
+.preloader{
+  position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+  background:radial-gradient(circle at 50% 42%,#0b3d78 0%,#062b59 38%,#03172f 100%);color:#fff;overflow:hidden;
+  transition:clip-path 1s cubic-bezier(.76,0,.24,1),visibility 1s;clip-path:inset(0 0 0 0);
+}
+.preloader.done{clip-path:inset(0 0 100% 0);visibility:hidden}
+.pl-rays{
+  position:absolute;left:50%;top:42%;width:150vmax;height:150vmax;translate:-50% -50%;pointer-events:none;opacity:.5;
+  background:repeating-conic-gradient(from 0deg,rgba(244,196,0,.09) 0deg 5deg,transparent 5deg 15deg);
+  -webkit-mask:radial-gradient(circle,#000 0%,transparent 55%);mask:radial-gradient(circle,#000 0%,transparent 55%);
+  animation:plSpin 40s linear infinite
+}
+.pl-crest{position:relative;width:clamp(130px,22vmin,190px);aspect-ratio:160/238;animation:plFloat 3s ease-in-out 1.6s infinite}
+.pl-crest::before{
+  content:"";position:absolute;inset:-25%;border-radius:50%;
+  background:radial-gradient(circle,rgba(244,196,0,.45),transparent 62%);
+  opacity:0;animation:plGlow 2.4s ease-in-out 1.2s infinite
+}
+.pl-shield{position:relative;width:100%;height:100%;overflow:visible}
+.pl-img{opacity:0;transform-box:fill-box;transform-origin:50% 60%;animation:plCrestIn 1s cubic-bezier(.22,1,.36,1) .85s forwards}
+.pl-outline{fill:none;stroke:var(--gold);stroke-width:3;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;
+  filter:drop-shadow(0 0 6px rgba(244,196,0,.8));animation:plDraw 1.2s cubic-bezier(.65,0,.35,1) .1s forwards}
+.pl-shine{transform-box:view-box;transform:translateX(-200px);animation:plShine 2.6s ease-in-out 1.8s infinite}
+.pl-star{fill:#fff;opacity:0;transform-box:fill-box;transform-origin:center;animation:plTwinkle 2.2s ease-in-out infinite}
+.pl-title{font-size:clamp(11px,1.4vw,14px);font-weight:800;letter-spacing:.32em;text-align:center;color:rgba(255,255,255,.75);opacity:0;animation:plUp .8s ease 1.2s forwards;padding:0 16px}
+.pl-motto{display:flex;gap:.4em;font-size:clamp(28px,5vw,46px);font-weight:900;letter-spacing:.06em;line-height:1}
+.pl-motto span{display:inline-block;opacity:0;animation:plRise .9s cubic-bezier(.16,1,.3,1) forwards}
+.pl-motto span:first-child{animation-delay:1.35s;color:#fff}
+.pl-motto span:last-child{animation-delay:1.55s;color:var(--gold)}
+.pl-bar{width:min(240px,60vw);height:3px;border-radius:3px;background:rgba(255,255,255,.14);overflow:hidden;opacity:0;animation:plUp .6s ease 1.5s forwards}
+.pl-bar span{display:block;height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--gold),#fff3b0);transition:width .35s ease}
+.pl-skip{position:absolute;bottom:22px;font-size:10px;letter-spacing:.25em;color:rgba(255,255,255,.4);opacity:0;animation:plUp .6s ease 2.6s forwards}
+.preloader.done .pl-crest{animation:plExit .8s cubic-bezier(.76,0,.24,1) forwards}
+@keyframes plDraw{to{stroke-dashoffset:0}}
+@keyframes plCrestIn{from{opacity:0;transform:scale(.6) translateY(20px)}to{opacity:1;transform:none}}
+@keyframes plShine{0%{transform:translateX(-200px)}55%,100%{transform:translateX(260px)}}
+@keyframes plTwinkle{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:1;transform:scale(1)}}
+@keyframes plGlow{0%,100%{opacity:.35;transform:scale(.92)}50%{opacity:.85;transform:scale(1.05)}}
+@keyframes plFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes plUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes plRise{from{opacity:0;transform:translateY(100%) rotate(4deg);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes plSpin{to{rotate:360deg}}
+@keyframes plExit{to{transform:translateY(-40px) scale(1.12);opacity:0}}
+@media(prefers-reduced-motion:reduce){
+  .preloader *,.preloader *::before{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}
+  .preloader{transition:opacity .3s,visibility .3s}
+  .preloader.done{clip-path:none;opacity:0}
 }
 
 </style>
@@ -965,35 +1007,72 @@ body.opening-active{overflow:hidden}
 
 <body>
 
-<!-- Signature opening experience -->
-<div class="opening-screen" id="openingScreen" aria-label="Fr. Agnel Higher Secondary School">
-  <div class="opening-bg" aria-hidden="true">
-    <div class="opening-bg-slide active" style="background-image:url('PILAR HSS (1).jpeg')"></div>
-    <div class="opening-bg-slide" style="background-image:url('classroom.JPG')"></div>
-    <div class="opening-bg-slide" style="background-image:url('Teachers.jpeg')"></div>
-    <div class="opening-bg-slide" style="background-image:url('PILAR HSS (12).JPG')"></div>
+<!-- Logo preloader -->
+<div class="preloader" id="preloader" role="status" aria-live="polite" aria-label="Loading Fr. Agnel Higher Secondary School">
+  <div class="pl-rays" aria-hidden="true"></div>
+  <div class="pl-crest" aria-hidden="true">
+    <svg class="pl-shield" viewBox="0 0 160 238">
+      <defs>
+        <clipPath id="plClip"><path d="M80,1.5 C58,18 32,28 2,31 L2,166 C4,212 40,236.5 80,236.5 C120,236.5 156,212 158,166 L158,31 C128,28 102,18 80,1.5 Z"/></clipPath>
+        <linearGradient id="plShineGrad" x1="0" x2="1">
+          <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+          <stop offset=".5" stop-color="#fff" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <g clip-path="url(#plClip)">
+        <image class="pl-img" href="images/logo.png" x="0" y="0" width="160" height="238" preserveAspectRatio="none"/>
+        <g transform="rotate(20 80 119)"><rect class="pl-shine" x="0" y="-60" width="50" height="360" fill="url(#plShineGrad)"/></g>
+      </g>
+      <path class="pl-outline" pathLength="1" d="M80,1.5 C58,18 32,28 2,31 L2,166 C4,212 40,236.5 80,236.5 C120,236.5 156,212 158,166 L158,31 C128,28 102,18 80,1.5 Z"/>
+      <path class="pl-star" style="animation-delay:1.9s" d="M-4,-14 l3,9 9,0 -7,5 3,9 -8,-6 -8,6 3,-9 -7,-5 9,0z" transform="translate(-6,40)"/>
+      <path class="pl-star" style="animation-delay:2.5s" d="M0,-9 l2,6 6,0 -5,3.5 2,6 -5,-4 -5,4 2,-6 -5,-3.5 6,0z" transform="translate(170,70)"/>
+      <path class="pl-star" style="animation-delay:3.1s" d="M0,-7 l1.6,4.8 5,0 -4,3 1.6,4.8 -4.2,-3 -4.2,3 1.6,-4.8 -4,-3 5,0z" transform="translate(-14,190)"/>
+    </svg>
   </div>
-
-  <div class="opening-glow"></div>
-
-  <div class="opening-content">
-    <div class="opening-school">FR. AGNEL HSS</div>
-    <div class="opening-place">PILAR, GOA</div>
-    <div class="opening-rule"></div>
-    <h1 class="opening-motto" aria-label="Always Higher">
-      <span class="motto-always">ALWAYS</span>
-      <span class="motto-higher">HIGHER.</span>
-    </h1>
-    <div class="opening-subtitle">Learning with purpose. Growing with character.</div>
-  </div>
-
-  <div class="opening-photo-label">School • Community • Excellence</div>
-  <div class="opening-bg-controls" aria-label="Opening background controls">
-    <button class="opening-bg-arrow" id="openingPrev" type="button" aria-label="Previous background">‹</button>
-    <div class="opening-bg-dots" id="openingDots"></div>
-    <button class="opening-bg-arrow" id="openingNext" type="button" aria-label="Next background">›</button>
-  </div>
+  <div class="pl-title">FR. AGNEL HIGHER SECONDARY SCHOOL · PILAR</div>
+  <div class="pl-motto" aria-hidden="true"><span>ALWAYS</span><span>HIGHER</span></div>
+  <div class="pl-bar" aria-hidden="true"><span id="plBar"></span></div>
+  <div class="pl-skip" aria-hidden="true">CLICK TO SKIP</div>
 </div>
+<script>
+(function(){
+  const pl = document.getElementById('preloader');
+  const bar = document.getElementById('plBar');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const MIN = reduce ? 300 : 2600, MAX = 8000, t0 = Date.now();
+  let progress = 0, loaded = false, finished = false;
+  document.body.classList.add('is-loading');
+
+  const trickle = setInterval(() => {
+    const cap = loaded ? 100 : 90;
+    progress = Math.min(cap, progress + (cap - progress) * 0.12 + 0.6);
+    bar.style.width = progress + '%';
+  }, 120);
+
+  function finish(){
+    if(finished) return;
+    finished = true;
+    clearInterval(trickle);
+    bar.style.width = '100%';
+    setTimeout(() => {
+      pl.classList.add('done');
+      document.body.classList.remove('is-loading');
+      document.dispatchEvent(new Event('preloader:done'));
+      setTimeout(() => pl.remove(), 1100);
+    }, 350);
+  }
+  function onLoad(){
+    loaded = true;
+    setTimeout(finish, Math.max(0, MIN - (Date.now() - t0)));
+  }
+  if(document.readyState === 'complete') onLoad(); else window.addEventListener('load', onLoad);
+  setTimeout(finish, MAX);
+  pl.addEventListener('click', () => { if(Date.now() - t0 > 600) finish(); });
+  window.addEventListener('keydown', e => { if(e.key === 'Escape') finish(); });
+})();
+</script>
+
 
 
 
@@ -1020,10 +1099,11 @@ body.opening-active{overflow:hidden}
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About Us</a></li>
+                <li><a href="#history">Our Story</a></li>
                 <li><a href="#academics">Academics</a></li>
                 <li><a href="#admissions">Admissions</a></li>
                 <li><a href="#gallery-showcase">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#visit">Contact</a></li>
             </ul>
         </nav>
     </div>
@@ -1048,6 +1128,15 @@ body.opening-active{overflow:hidden}
 
 
 <section class="hero" id="home" aria-label="Welcome to Fr. Agnel Higher Secondary School">
+  <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+  <svg class="spin-seal hero-seal" viewBox="0 0 200 200" aria-hidden="true">
+    <defs><path id="sealPath" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs>
+    <circle cx="100" cy="100" r="97" fill="rgba(3,23,47,.45)" stroke="rgba(244,196,0,.6)" stroke-width="1.5"/>
+    <circle cx="100" cy="100" r="58" fill="none" stroke="rgba(255,255,255,.18)" stroke-dasharray="3 5"/>
+    <g class="seal-spin"><text font-size="14" font-weight="800" fill="#fff" textLength="470" lengthAdjust="spacing"><textPath href="#sealPath">ALWAYS HIGHER • FR. AGNEL HSS • PILAR •</textPath></text></g>
+    <text x="100" y="94" text-anchor="middle" fill="#f4c400" font-size="12" font-weight="700" letter-spacing="4">SINCE</text>
+    <text x="100" y="126" text-anchor="middle" fill="#fff" font-size="34" font-weight="900">1979</text>
+  </svg>
   <div class="container">
     <div class="hero-content">
       <span class="hero-badge">FR. AGNEL HIGHER SECONDARY SCHOOL • PILAR, GOA</span>
@@ -1075,7 +1164,7 @@ body.opening-active{overflow:hidden}
  
     <!-- Slide 1: replace the file with your own photo in the images/ folder -->
     <div class="slide">
-      <img src="classroom.JPG" alt="Students in classroom">
+      <img src="images/classroom-jpg.jpg" alt="Students in classroom">
       <div class="caption">
         <h3>Classroom Learning</h3>
         <p>Engaged students in our science lab</p>
@@ -1084,7 +1173,7 @@ body.opening-active{overflow:hidden}
  
     <!-- Slide 2 -->
     <div class="slide">
-      <img src="lib.JPG" alt="School library">
+      <img src="images/lib-jpg.jpg" alt="School library">
       <div class="caption">
         <h3>Our Library</h3>
         <p>A quiet space to read and study</p>
@@ -1093,7 +1182,7 @@ body.opening-active{overflow:hidden}
  
     <!-- Slide 3 -->
     <div class="slide">
-      <img src="ct lab.JPG" alt="Computer Techniques lab">
+      <img src="images/ct-lab-jpg.jpg" alt="Computer Techniques lab">
       <div class="caption">
         <h3>Computer Techniques Lab</h3>
         <p>Our Computer Techniques Lab where our students learn cutting-edge technology </p>
@@ -1102,13 +1191,45 @@ body.opening-active{overflow:hidden}
  
     <!-- Slide 4 -->
     <div class="slide">
-      <img src="PILAR HSS (5).JPG" alt="Prayer Room ">
+      <img src="images/pilar-hss-5-jpg.jpg" alt="Prayer Room ">
       <div class="caption">
         <h3>Prayer Room </h3>
         <p>A Prayer To Our Lord</p>
       </div>
     </div>
- 
+
+    <div class="slide">
+      <img src="images/pilar-hss-12-jpg.jpg" alt="Students working on an electronics project with their teacher">
+      <div class="caption">
+        <h3>Hands-on Learning</h3>
+        <p>Students building and testing projects together</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="images/pilar-hss-8-jpg.jpg" alt="Students doing experiments in the chemistry lab">
+      <div class="caption">
+        <h3>Science Laboratory</h3>
+        <p>Practical experiments that bring theory to life</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="images/pilar-hss-7-jpg.jpg" alt="Auto Engineering students working on a vehicle">
+      <div class="caption">
+        <h3>Auto Engineering Workshop</h3>
+        <p>Vocational students learning with real machines</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="images/enter-jpg.jpg" alt="Fr. Agnel Higher Secondary School building, Pilar">
+      <div class="caption">
+        <h3>Our Campus</h3>
+        <p>Fr. Agnel Higher Secondary School, Pilar, Goa</p>
+      </div>
+    </div>
+
     <!-- Add more slides by copying a <div class="slide">...</div> block above -->
  
   </div>
@@ -1154,6 +1275,146 @@ body.opening-active{overflow:hidden}
     </div>
 </section>
 
+<!-- ===== OUR STORY / TIMELINE ===== -->
+<section class="section history-section" id="history">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Since 1979</span>
+      <h2>Our Story</h2>
+      <p>From two streams in 1979 to a full range of general and vocational courses, the school has served the youth of Pilar and its neighbourhood for over four decades.</p>
+    </div>
+
+    <div class="timeline" id="timeline">
+      <div class="timeline-line" aria-hidden="true"><span class="timeline-progress"></span></div>
+
+      <div class="timeline-item left">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <div class="timeline-card">
+          <img class="timeline-img" src="images/pilar-hss-2-jpg.jpg" alt="Students gathered in the school hall" loading="lazy">
+          <div class="timeline-year">June 1979</div>
+          <h3>The Beginning</h3>
+          <p>The late Fr. Philomeno D’Costa sfx founded the school with the Arts and Commerce streams to meet the needs of young people from the neighbourhood.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <div class="timeline-card">
+          <img class="timeline-img" src="images/pilar-hss-10-jpg.jpg" alt="Students doing a physics experiment in the lab" loading="lazy">
+          <div class="timeline-year">June 1980</div>
+          <h3>Science Stream Added</h3>
+          <p>A year later, the Science stream opened, adding Physics, Chemistry, Biology and Mathematics.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <div class="timeline-card">
+          <img class="timeline-img" src="images/aet-jpg.jpg" alt="A vehicle built by Auto Engineering Technology students" loading="lazy">
+          <div class="timeline-year">Vocational Era</div>
+          <h3>Skills for Careers</h3>
+          <p>When the Central Government first brought vocational education to Goa, the school started the Vocational stream with four courses: Computer Technique, Auto Engineering Technology, Office Secretaryship &amp; Stenography, and Insurance.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <div class="timeline-card">
+          <img class="timeline-img" src="images/teachers-jpeg.jpg" alt="Staff of Fr. Agnel Higher Secondary School" loading="lazy">
+          <div class="timeline-year">Today</div>
+          <h3>Always Higher</h3>
+          <p>The school is run by the Xaverian Educational Society (Pilar Fathers), registered under the Societies Registration Act, 1860. It continues to aim “Always Higher”.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="leaders">
+      <div class="section-title small-title">
+        <span class="eyebrow">Down Memory Lane</span>
+        <h2>Our Principals</h2>
+      </div>
+      <div class="leader-track">
+        <div class="leader"><span class="num">01</span><strong>Late Rev. Fr. Philomeno D’Costa sfx</strong><span>June 1979 – 1993</span><em>Founder</em></div>
+        <div class="leader"><span class="num">02</span><strong>Late Rev. Fr. Agnelo Noronha sfx</strong><span>June 1993 – 1998</span></div>
+        <div class="leader"><span class="num">03</span><strong>Rev. Fr. Richard Couto sfx</strong><span>June 1998 – May 2001</span></div>
+        <div class="leader"><span class="num">04</span><strong>Rev. Fr. Carlos Fernandes sfx</strong><span>June 2001 – May 2005</span></div>
+        <div class="leader"><span class="num">05</span><strong>Rev. Fr. Frank Mendes sfx</strong><span>May 2005 – May 2010</span></div>
+        <div class="leader"><span class="num">06</span><strong>Rev. Fr. Carlos Fernandes sfx</strong><span>May 2010 – June 2014</span></div>
+        <div class="leader"><span class="num">07</span><strong>Rev. Fr. Andrew Silveira sfx</strong><span>July 2014 onwards</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISION & STATUTE ===== -->
+<section class="section vision-section" id="vision">
+  <svg class="wave-top" viewBox="0 0 2880 60" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 C1680,60 1920,0 2160,30 C2400,60 2640,0 2880,30 L2880,0 L0,0 Z"/>
+  </svg>
+  <span class="blob b1" aria-hidden="true"></span>
+  <span class="blob b2" aria-hidden="true"></span>
+  <div class="container vision-grid">
+    <div>
+      <span class="eyebrow" style="color:var(--gold)">Our Vision</span>
+      <h2>Forming Young People for Life</h2>
+      <div class="vision-list">
+        <div class="vision-item"><span class="vision-num">01</span><p>Forming young people through well-rounded development, grounded in strong moral, human and social values.</p></div>
+        <div class="vision-item"><span class="vision-num">02</span><p>Living by our motto, <strong>“Always Higher”</strong>, in everything we do.</p></div>
+        <div class="vision-item"><span class="vision-num">03</span><p>Building skilled, honest, hardworking and disciplined citizens who can think, analyse and act on their own with confidence.</p></div>
+        <div class="vision-item"><span class="vision-num">04</span><p>Keeping learning relevant to life, guided by the values Jesus taught and lived, so students can make the right career and life choices.</p></div>
+      </div>
+    </div>
+    <aside class="statute-card">
+      <h3>Our Statute</h3>
+      <ul>
+        <li>A Catholic institution administered under minority rights</li>
+        <li>An English-medium school run by the Xaverian Educational Society, established by the Society of Pilar</li>
+        <li>Open to students of every creed and caste</li>
+        <li>Established under the patronage of Venerable Fr. Agnelo de Souza</li>
+      </ul>
+      <div class="motto-mark">ALWAYS <span>HIGHER</span></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== OUR PATRON ===== -->
+<section class="section patron-section" id="patron">
+  <div class="container patron-grid">
+    <div class="patron-frame">
+      <img src="https://fragnelhsspilar.wordpress.com/wp-content/uploads/2015/12/dsc_0010.jpg?w=600" alt="Venerable Fr. Agnelo de Souza" loading="lazy" onerror="this.parentElement.classList.add('no-img')">
+      <div class="patron-monogram" aria-hidden="true">FA</div>
+      <svg class="spin-seal patron-seal" viewBox="0 0 200 200" aria-hidden="true">
+        <defs><path id="sealPath2" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs>
+        <circle cx="100" cy="100" r="97" fill="#062b59"/>
+        <g class="seal-spin"><text font-size="14" font-weight="800" fill="#fff" textLength="470" lengthAdjust="spacing"><textPath href="#sealPath2">VENERABLE • FR. AGNELO • 1869 – 1927 •</textPath></text></g>
+        <text x="100" y="98" text-anchor="middle" fill="#f4c400" font-size="13" font-weight="700" letter-spacing="3">OUR</text>
+        <text x="100" y="122" text-anchor="middle" fill="#fff" font-size="21" font-weight="900" letter-spacing="1">PATRON</text>
+      </svg>
+    </div>
+    <div class="patron-copy">
+      <span class="eyebrow">Our Patron · Beyond the Ordinary</span>
+      <h2>Ven. Fr. Agnelo de Souza</h2>
+      <p>Fr. Agnelo was born in Anjuna, Goa, on the feast of St. Agnes, and was named Agnel, “little lamb”. He lost both parents as a boy but stayed a brilliant student. He topped his classes, studied philosophy and theology at Rachol Seminary, and taught Latin and Portuguese before joining the Society of Pilar.</p>
+      <p>He served as a pastor, preacher, confessor and spiritual guide, and was known for living exactly what he preached. He collapsed in the pulpit while preaching on the Vespers of the Sacred Heart and died the next morning. Today he is a model and intercessor for the Pilar family.</p>
+      <div class="patron-facts">
+        <div class="fact"><b>21 Jan 1869</b><span>Born in Anjuna, Goa</span></div>
+        <div class="fact"><b>17 Jul 1897</b><span>Joined the Society of Pilar</span></div>
+        <div class="fact"><b>24 Sep 1899</b><span>Ordained a priest</span></div>
+        <div class="fact"><b>20 Nov 1927</b><span>Returned to the Lord</span></div>
+      </div>
+      <div class="sayings" id="sayings" aria-live="polite">
+        <p class="saying active">“Trust in God and rest like a dog at the feet of his master.”</p>
+        <p class="saying">“It is not the clothing that honours the man but his virtues.”</p>
+        <p class="saying">“One who fulfils his duties faithfully is on the way to perfection.”</p>
+        <p class="saying">“One must not leave off a good action on account of the criticism of others.”</p>
+        <p class="saying">“Our willingness to pray, to do good works, and to become virtuous, are gifts of God.”</p>
+        <p class="saying">“One who lives according to the rule, lives according to God.”</p>
+        <div class="sayings-foot"><span>Sayings of Ven. Fr. Agnelo</span><div class="sayings-dots" id="sayingsDots"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <section class="section academics-section" id="academics">
   <div class="container">
@@ -1170,6 +1431,7 @@ body.opening-active{overflow:hidden}
       </div>
       <div class="academic-grid">
         <article class="academic-card detailed-card">
+          <img class="course-img" src="images/classroom-jpg.jpg" alt="Arts stream students in class" loading="lazy">
           <div class="icon">📚</div><h3>Arts Stream</h3>
           <h4>Compulsory Group</h4><ul><li>Language I: English</li><li>Language II: Hindi / Konkani</li></ul>
           <h4>Stream Group</h4><ul><li>Economics / Secretarial Practice</li><li>Political Science</li><li>Psychology</li><li>History / Sociology</li></ul>
@@ -1178,6 +1440,7 @@ body.opening-active{overflow:hidden}
         </article>
 
         <article class="academic-card detailed-card">
+          <img class="course-img" src="images/lib-jpg.jpg" alt="Commerce students studying in the library" loading="lazy">
           <div class="icon">📊</div><h3>Commerce Stream</h3>
           <h4>Compulsory Group</h4><ul><li>Language I: English</li><li>Language II: Hindi / Konkani</li></ul>
           <h4>Stream Group</h4><ul><li>Economics</li><li>Secretarial Practice</li><li>Accountancy</li><li>Business Studies</li></ul>
@@ -1185,6 +1448,7 @@ body.opening-active{overflow:hidden}
         </article>
 
         <article class="academic-card detailed-card">
+          <img class="course-img" src="images/pilar-hss-9-jpg.jpg" alt="Science students doing practicals in the lab" loading="lazy">
           <div class="icon">🔬</div><h3>Science Stream</h3>
           <h4>Compulsory Group</h4><ul><li>Language I: English</li><li>Language II: Hindi / Konkani</li></ul>
           <h4>Stream Group</h4><ul><li>Physics</li><li>Chemistry</li><li>Biology</li><li>Mathematics</li></ul>
@@ -1201,6 +1465,7 @@ body.opening-active{overflow:hidden}
       </div>
       <div class="academic-grid">
         <article class="academic-card detailed-card">
+          <img class="course-img" src="images/pilar-hss-7-jpg.jpg" alt="Auto Engineering students working on a vehicle" loading="lazy">
           <div class="icon">🚗</div><h3>Auto Engineering Technology</h3>
           <h4>Compulsory Subjects</h4><ul><li>Communication Skill</li><li>General Foundation Course</li></ul>
           <h4>Vocational Subjects</h4><ul><li>Auto Servicing and Garage</li><li>Automobile Engineering II</li><li>Auto Transmission</li><li>Auto Servicing and Garage</li></ul>
@@ -1209,6 +1474,7 @@ body.opening-active{overflow:hidden}
         </article>
 
         <article class="academic-card detailed-card featured-academic">
+          <img class="course-img" src="images/ct-lab-jpg.jpg" alt="Computer Technique students in the computer lab" loading="lazy">
           <div class="icon">💻</div><h3>Computer Technique</h3>
           <h4>Compulsory Subjects</h4><ul><li>Communication Skill</li><li>General Foundation Course</li></ul>
           <h4>Vocational Subjects</h4><ul><li>Mathematics (Vocational)</li><li>Computer Organisation &amp; Operating Systems</li><li>Computer Software Applications</li><li>Web Technology</li></ul>
@@ -1217,6 +1483,7 @@ body.opening-active{overflow:hidden}
         </article>
 
         <article class="academic-card detailed-card">
+          <img class="course-img" src="images/pilar-hss-15-jpg.jpg" alt="Students working at computers with their teacher" loading="lazy">
           <div class="icon">🛡️</div><h3>Insurance</h3>
           <h4>Compulsory Subjects</h4><ul><li>Communication Skill</li><li>General Foundation Course</li></ul>
           <h4>Vocational Subjects</h4><ul><li>Life Insurance</li><li>General Insurance</li><li>Accountancy</li><li>Computer Application</li></ul>
@@ -1225,6 +1492,7 @@ body.opening-active{overflow:hidden}
         </article>
 
         <article class="academic-card detailed-card">
+          <img class="course-img" src="images/pilar-hss-11-jpg.jpg" alt="Office Secretaryship students in the computer room" loading="lazy">
           <div class="icon">🗂️</div><h3>Office Secretaryship &amp; Stenography</h3>
           <div class="girls-only">For Girls Only</div>
           <h4>Compulsory Subjects</h4><ul><li>Communication Skill</li><li>General Foundation Course</li></ul>
@@ -1297,10 +1565,10 @@ body.opening-active{overflow:hidden}
         </div>
 
         <div class="stats">
-            <div class="stat"><strong>100%</strong><span>Commitment to Learning</span></div>
-            <div class="stat"><strong>360°</strong><span>Holistic Development</span></div>
-            <div class="stat"><strong>∞</strong><span>Opportunities to Grow</span></div>
-            <div class="stat"><strong>1</strong><span>Strong School Community</span></div>
+            <div class="stat"><strong data-count="1979" data-from="1900">1979</strong><span>Year We Were Founded</span></div>
+            <div class="stat"><strong data-since="1979" data-suffix="+">45+</strong><span>Years of Education</span></div>
+            <div class="stat"><strong data-count="7">7</strong><span>General &amp; Vocational Courses</span></div>
+            <div class="stat"><strong data-count="45">45</strong><span>Days of On-the-Job Training</span></div>
         </div>
     </div>
 </section>
@@ -1374,13 +1642,109 @@ body.opening-active{overflow:hidden}
       <h2>Moments That Matter</h2>
       <p>A glimpse of learning, participation and the experiences that make school life memorable.</p>
     </div>
+    <div class="gallery-filters" role="toolbar" aria-label="Filter gallery">
+      <button type="button" class="active" data-filter="all">All</button>
+      <button type="button" data-filter="learning">Learning</button>
+      <button type="button" data-filter="celebrations">Celebrations</button>
+      <button type="button" data-filter="culture">Culture</button>
+      <button type="button" data-filter="faith">Faith</button>
+    </div>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="PILAR HSS (12).JPG" alt="Students learning at Fr. Agnel Higher Secondary School"><div class="gallery-label">Learning Together</div></div>
-      <div class="gallery-item"><img src="lib.JPG" alt="School library"><div class="gallery-label">Read & Explore</div></div>
-      <div class="gallery-item"><img src="ct lab.JPG" alt="Students learning in the computer lab"><div class="gallery-label">Technology & Teamwork</div></div>
-      <div class="gallery-item"><img src="PILAR HSS (17).JPG" alt="Father's birthday celebration with the school community"><div class="gallery-label">Father's Birthday</div></div>
-    <div class="gallery-item"><img src="PILAR HSS (5).JPEG" alt="Independence Day Celebration"><div class="gallery-label">Independence Day Celebration</div></div>
-    
+      <div class="gallery-item big" data-cat="learning"><img src="images/pilar-hss-12-jpg.jpg" alt="Students working on an electronics project with their teacher" loading="lazy"><div class="gallery-label">Learning Together</div></div>
+      <div class="gallery-item" data-cat="celebrations"><img src="images/pilar-hss-17-jpg.jpg" alt="Father's birthday celebration with the school community" loading="lazy"><div class="gallery-label">Father's Birthday</div></div>
+      <div class="gallery-item" data-cat="culture"><img src="images/pilar-hss-20-jpg.jpg" alt="Students performing a folk dance" loading="lazy"><div class="gallery-label">Folk Dance</div></div>
+      <div class="gallery-item" data-cat="learning"><img src="images/ct-lab-jpg.jpg" alt="Students learning in the computer lab" loading="lazy"><div class="gallery-label">Technology &amp; Teamwork</div></div>
+      <div class="gallery-item wide" data-cat="culture"><img src="images/pilar-hss-4-jpg.jpg" alt="Students in traditional dress" loading="lazy"><div class="gallery-label">Traditional Day</div></div>
+      <div class="gallery-item" data-cat="celebrations"><img src="images/pilar-hss-5-jpeg.jpg" alt="Independence Day performance on stage" loading="lazy"><div class="gallery-label">Independence Day Celebration</div></div>
+      <div class="gallery-item tall" data-cat="faith"><img src="images/pilar-hss-6-jpeg.jpg" alt="Holy Mass in the school hall" loading="lazy"><div class="gallery-label">Empowered by the Spirit</div></div>
+      <div class="gallery-item" data-cat="learning"><img src="images/pilar-hss-9-jpg.jpg" alt="Students doing science practicals" loading="lazy"><div class="gallery-label">Science Practicals</div></div>
+      <div class="gallery-item" data-cat="celebrations"><img src="images/pilar-hss-1-jpg.jpg" alt="Christmas cake cutting with the Fathers and staff" loading="lazy"><div class="gallery-label">Christmas Celebration</div></div>
+      <div class="gallery-item" data-cat="culture"><img src="images/pilar-hss-22-jpg.jpg" alt="Stage performance with glowing lights" loading="lazy"><div class="gallery-label">Light &amp; Shadow</div></div>
+      <div class="gallery-item" data-cat="learning"><img src="images/pilar-hss-16-jpg.jpg" alt="Vocational students in a practical session" loading="lazy"><div class="gallery-label">Skill Training</div></div>
+      <div class="gallery-item wide" data-cat="celebrations"><img src="images/pilar-hss-19-jpg.jpg" alt="Guests welcomed in a procession with umbrellas" loading="lazy"><div class="gallery-label">A Grand Welcome</div></div>
+      <div class="gallery-item" data-cat="faith"><img src="images/pilar-hss-23-jpg.jpg" alt="Faith tableau performed on stage" loading="lazy"><div class="gallery-label">Faith on Stage</div></div>
+      <div class="gallery-item" data-cat="culture"><img src="images/pilar-hss-21-jpg.jpg" alt="Performer in an illuminated costume" loading="lazy"><div class="gallery-label">Evening Performance</div></div>
+      <div class="gallery-item" data-cat="celebrations"><img src="images/pilar-hss-3-jpeg.jpg" alt="Watering plants during a school programme" loading="lazy"><div class="gallery-label">Planting for the Future</div></div>
+      <div class="gallery-item" data-cat="celebrations"><img src="images/pilar-hss-7-jpeg.jpg" alt="Welcome programme for the Respected Provincial" loading="lazy"><div class="gallery-label">Welcoming Our Provincial</div></div>
+      <div class="gallery-item" data-cat="learning"><img src="images/lib-jpg.jpg" alt="Students reading in the school library" loading="lazy"><div class="gallery-label">Read &amp; Explore</div></div>
+      <div class="gallery-item wide" data-cat="faith"><img src="images/pilar-hss-2-jpg.jpg" alt="Students gathered in the school hall" loading="lazy"><div class="gallery-label">Our School Family</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRAYER & HYMN ===== -->
+<section class="section prayer-section" id="prayer">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Faith &amp; Formation</span>
+      <h2>Our Prayer &amp; Hymn</h2>
+      <p>Words that begin our school day and honour our patron.</p>
+    </div>
+    <div class="prayer-grid">
+      <article class="prayer-card">
+        <img class="prayer-img" src="images/pilar-hss-5-jpg.jpg" alt="Students praying together in the prayer room" loading="lazy">
+        <div class="icon">🙏</div>
+        <h3>School Prayer</h3>
+        <p class="prayer-text">
+          Dearest Lord, teach me to be generous,<br>
+          teach me to love and serve you as you deserve,<br>
+          to give and not to count the cost,<br>
+          to fight and not to heed the wounds,<br>
+          to toil and not to seek for rest,<br>
+          to labour and to look for no reward,<br>
+          save that of knowing that I do your Holy Will.
+        </p>
+      </article>
+      <article class="prayer-card">
+        <img class="prayer-img" src="images/pilar-hss-6-jpeg.jpg" alt="Holy Mass in the school hall" loading="lazy">
+        <div class="icon">🎵</div>
+        <h3>Hymn to Our Patron</h3>
+        <p class="prayer-text">
+          Fr. Agnel in heaven a celebrity,<br>
+          lived in simplicity and humility,<br>
+          served God and all humanity,<br>
+          with great love and charity!
+        </p>
+        <p class="prayer-text chorus">
+          <strong>Chorus</strong><br>
+          Fr. Agnel, bright star of Pilar,<br>
+          your faith in God so stellar.<br>
+          Fr. Agnel, help us we pray<br>
+          to learn and grow each day!
+        </p>
+        <p class="prayer-text">
+          Make us useful and dutiful,<br>
+          always generous and grateful,<br>
+          making everything beautiful,<br>
+          ever true to Him and faithful.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT US ===== -->
+<section class="section visit-section" id="visit">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Find Us</span>
+      <h2>Visit Our Campus</h2>
+      <p>On Pilar hill in Tiswadi, Goa. We’d love to welcome you.</p>
+    </div>
+    <figure class="campus-banner">
+      <img src="images/enter-jpg.jpg" alt="Front view of the Fr. Agnel Higher Secondary School building" loading="lazy">
+      <figcaption><span>Our Campus</span>Fr. Agnel Higher Secondary School, Pilar</figcaption>
+    </figure>
+    <div class="visit-grid">
+      <div class="visit-cards">
+        <div class="visit-card"><div class="icon">📍</div><div><strong>Address</strong><p>Fr. Agnel Higher Secondary School,<br>Pilar, Tiswadi, Goa 403203, India</p></div></div>
+        <div class="visit-card"><div class="icon">📞</div><div><strong>Phone</strong><p><a href="tel:+919423747736">9423747736</a><br>Office: <a href="tel:+918322218589">0832-2218589</a></p></div></div>
+        <div class="visit-card"><div class="icon">✉️</div><div><strong>Email</strong><p><a href="mailto:fahsspilar@gmail.com">fahsspilar@gmail.com</a></p></div></div>
+        <div class="visit-card"><div class="icon">🕗</div><div><strong>School Hours</strong><p>Mon – Fri: 8:00 AM – 4:00 PM<br>Saturday: 8:00 AM – 12:30 PM</p></div></div>
+      </div>
+      <div class="map-wrap">
+        <iframe title="Map showing Fr. Agnel Higher Secondary School, Pilar" src="https://www.google.com/maps?q=15.440062,73.893360&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -1419,6 +1783,8 @@ body.opening-active{overflow:hidden}
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About Us</a></li>
+                <li><a href="#history">Our Story</a></li>
+                <li><a href="#patron">Our Patron</a></li>
                 <li><a href="#academics">Academics</a></li>
                 <li><a href="#admissions">Admissions</a></li>
                 <li><a href="#gallery-showcase">Gallery</a></li>
@@ -1428,8 +1794,9 @@ body.opening-active{overflow:hidden}
         <div class="footer-col">
             <h4>Contact</h4>
             <ul>
-                <li>📍 Pilar, Goa, India</li>
+                <li>📍 Pilar, Tiswadi, Goa 403203</li>
                 <li>📞 <a href="tel:+919423747736">9423747736</a></li>
+                <li>☎️ <a href="tel:+918322218589">0832-2218589</a></li>
                 <li>✉️ <a href="mailto:fahsspilar@gmail.com">fahsspilar@gmail.com</a></li>
             </ul>
         </div>
@@ -1557,41 +1924,215 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 </script>
 
 
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">↑</button>
+
 <script>
-/* Always Higher opening sequence */
+/* Motion layer: reveals, counters, timeline, particles, sayings, lightbox */
 (function(){
-  const screen = document.getElementById('openingScreen');
-  if(!screen) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  document.body.classList.add('opening-active');
+  /* Run a callback once the logo preloader has finished */
+  function whenOpened(cb){
+    const p = document.getElementById('preloader');
+    if(!p) return cb();
+    document.addEventListener('preloader:done', () => cb(), {once:true});
+  }
 
-  let closed = false;
+  /* Scroll reveal with stagger */
+  const revealSel = '.section-title,.highlight,.principal-photo,.message,.timeline-item,.leader,.vision-item,.statute-card,.patron-frame,.patron-copy,.academic-category-heading,.academic-card,.syllabus-box,.values .card,.about-grid > div,.stat,.staff-photo,.event,.gallery-item,.prayer-card,.visit-card,.map-wrap,.campus-banner,.gallery-filters,.cta .container > *';
+  if(!reduce && 'IntersectionObserver' in window){
+    const els = [...document.querySelectorAll(revealSel)];
+    els.forEach(el => {
+      const sibs = [...el.parentElement.children].filter(c => c.matches(revealSel));
+      el.style.setProperty('--rd', (Math.min(sibs.indexOf(el), 6) * 0.09) + 's');
+      el.classList.add('reveal');
+    });
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      if(en.isIntersecting){ en.target.classList.add('is-visible'); io.unobserve(en.target); }
+    }), {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    whenOpened(() => els.forEach(el => io.observe(el)));
+  }
 
-  const closeOpening = () => {
-    if(closed) return;
-    closed = true;
+  /* Animated counters */
+  const counters = document.querySelectorAll('[data-count],[data-since]');
+  counters.forEach(el => {
+    const target = el.dataset.since ? new Date().getFullYear() - Number(el.dataset.since) : Number(el.dataset.count);
+    el.dataset.target = target;
+    el.textContent = target + (el.dataset.suffix || '');
+  });
+  if(!reduce && 'IntersectionObserver' in window){
+    const cio = new IntersectionObserver(entries => entries.forEach(en => {
+      if(!en.isIntersecting) return;
+      cio.unobserve(en.target);
+      const el = en.target, end = Number(el.dataset.target), start = Number(el.dataset.from || 0), suffix = el.dataset.suffix || '';
+      const t0 = performance.now(), dur = 1800;
+      (function step(now){
+        const p = Math.min((now - t0) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(start + (end - start) * eased) + suffix;
+        if(p < 1) requestAnimationFrame(step);
+      })(t0);
+    }), {threshold:0.6});
+    whenOpened(() => counters.forEach(el => cio.observe(el)));
+  }
 
-    screen.classList.add('is-leaving');
-    document.body.classList.remove('opening-active');
-
-    setTimeout(() => {
-      screen.remove();
-    }, 1000);
-  };
-
-  // CLICK ANYWHERE on the opening screen to enter
-  screen.addEventListener('click', closeOpening);
-
-  // Keyboard support
-  window.addEventListener('keydown', function(e){
-    if(e.key === 'Enter' || e.key === ' ') {
-      closeOpening();
+  /* Scroll-driven: progress bar, back-to-top, timeline fill */
+  const bar = document.getElementById('scrollProgress');
+  const toTop = document.getElementById('toTop');
+  const timeline = document.getElementById('timeline');
+  const tItems = timeline ? [...timeline.querySelectorAll('.timeline-item')] : [];
+  const banner = document.querySelector('.campus-banner');
+  let ticking = false;
+  function onScroll(){
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? scrollY / max : 0) + ')';
+    toTop.classList.toggle('show', scrollY > 700);
+    if(timeline){
+      const r = timeline.getBoundingClientRect(), mark = innerHeight * 0.6;
+      const p = Math.max(0, Math.min(1, (mark - r.top) / r.height));
+      timeline.style.setProperty('--progress', (p * 100) + '%');
+      tItems.forEach(it => it.classList.toggle('passed', it.getBoundingClientRect().top + 30 < mark));
     }
+    if(banner && !reduce){
+      const br = banner.getBoundingClientRect();
+      if(br.bottom > 0 && br.top < innerHeight){
+        banner.style.setProperty('--py', ((br.top + br.height / 2 - innerHeight / 2) * -0.12).toFixed(1) + 'px');
+      }
+    }
+    ticking = false;
+  }
+  addEventListener('scroll', () => { if(!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
+  addEventListener('resize', onScroll);
+  onScroll();
+  toTop.addEventListener('click', () => scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'}));
+
+  /* Cursor spotlight on cards */
+  document.querySelectorAll('.academic-card,.values .card,.vision-item,.visit-card,.prayer-card,.leader').forEach(el => {
+    el.classList.add('spot');
+    el.addEventListener('pointermove', e => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
   });
 
+  /* Hero constellation particles */
+  const canvas = document.getElementById('heroCanvas');
+  if(canvas && !reduce){
+    const hero = canvas.parentElement, ctx = canvas.getContext('2d');
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let w = 0, h = 0, pts = [], running = false, mouse = {x:-9999, y:-9999};
+    function size(){
+      const r = hero.getBoundingClientRect();
+      w = r.width; h = r.height;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const n = Math.round(Math.min(90, (w * h) / 13000));
+      pts = Array.from({length:n}, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4,
+        r: Math.random() * 1.8 + .6, gold: Math.random() < .35
+      }));
+    }
+    function tick(){
+      if(!running) return;
+      ctx.clearRect(0, 0, w, h);
+      for(const p of pts){
+        p.x += p.vx; p.y += p.vy;
+        if(p.x < 0 || p.x > w) p.vx *= -1;
+        if(p.y < 0 || p.y > h) p.vy *= -1;
+        const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy);
+        if(d > 0 && d < 120){ p.x += dx / d * 1.4; p.y += dy / d * 1.4; }
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.gold ? 'rgba(244,196,0,.9)' : 'rgba(255,255,255,.75)';
+        ctx.fill();
+      }
+      for(let a = 0; a < pts.length; a++){
+        for(let b = a + 1; b < pts.length; b++){
+          const dx = pts[a].x - pts[b].x, dy = pts[a].y - pts[b].y, d2 = dx * dx + dy * dy;
+          if(d2 < 13000){
+            ctx.strokeStyle = 'rgba(255,255,255,' + (0.16 * (1 - d2 / 13000)) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(pts[a].x, pts[a].y); ctx.lineTo(pts[b].x, pts[b].y); ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+    size();
+    addEventListener('resize', size);
+    hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+    hero.addEventListener('pointerleave', () => { mouse.x = mouse.y = -9999; });
+    new IntersectionObserver(([en]) => {
+      const was = running; running = en.isIntersecting;
+      if(running && !was) requestAnimationFrame(tick);
+    }).observe(hero);
+  }
+
+  /* Patron sayings rotator */
+  const sayings = document.getElementById('sayings');
+  if(sayings){
+    const items = [...sayings.querySelectorAll('.saying')];
+    const dotsWrap = document.getElementById('sayingsDots');
+    let s = 0, st;
+    const dots = items.map((_, n) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.setAttribute('aria-label', 'Show saying ' + (n + 1));
+      if(n === 0) b.className = 'active';
+      b.addEventListener('click', () => { go(n); restart(); });
+      dotsWrap.appendChild(b); return b;
+    });
+    function go(n){
+      s = (n + items.length) % items.length;
+      items.forEach((it, k) => it.classList.toggle('active', k === s));
+      dots.forEach((d, k) => d.classList.toggle('active', k === s));
+    }
+    function restart(){ clearInterval(st); if(!reduce) st = setInterval(() => go(s + 1), 5500); }
+    restart();
+  }
+
+  /* Gallery category filter */
+  const filterBtns = document.querySelectorAll('.gallery-filters button');
+  const gItems = document.querySelectorAll('#gallery-showcase .gallery-item');
+  filterBtns.forEach(btn => btn.addEventListener('click', () => {
+    const f = btn.dataset.filter;
+    filterBtns.forEach(b => b.classList.toggle('active', b === btn));
+    gItems.forEach((it, n) => {
+      const show = f === 'all' || it.dataset.cat === f;
+      it.classList.toggle('hide', !show);
+      it.classList.remove('pop');
+      if(show && !reduce){
+        void it.offsetWidth;
+        it.style.animationDelay = (Math.min(n, 8) * 0.04) + 's';
+        it.classList.add('pop');
+      }
+    });
+  }));
+
+  /* Gallery lightbox */
+  const lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-modal', 'true');
+  lb.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">✕</button><figure><img alt=""><figcaption></figcaption></figure>';
+  document.body.appendChild(lb);
+  const lbImg = lb.querySelector('img'), lbCap = lb.querySelector('figcaption');
+  function closeLb(){ lb.classList.remove('open'); }
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img'), label = item.querySelector('.gallery-label');
+      lbImg.src = img.src; lbImg.alt = img.alt;
+      lbCap.textContent = label ? label.textContent : '';
+      lb.classList.add('open');
+    });
+  });
+  lb.addEventListener('click', e => { if(e.target !== lbImg) closeLb(); });
+  addEventListener('keydown', e => { if(e.key === 'Escape') closeLb(); });
 })();
 </script>
-
 
 </body>
 </html>
