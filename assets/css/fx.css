@@ -1,0 +1,148 @@
+/* Fr. Agnel HSS — preloader + extra animated graphics (all pages) */
+
+/* =========================================================
+   PRELOADER
+   ========================================================= */
+body.is-loading{overflow:hidden}
+.pl{position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;overflow:hidden;color:#fff;
+  background:radial-gradient(ellipse at 50% 40%,#0b3d78 0%,#062b59 40%,#020e1f 100%);
+  clip-path:circle(150% at var(--cx,50%) var(--cy,50%));transition:clip-path .75s cubic-bezier(.76,0,.24,1) .15s}
+.pl.pl-out{clip-path:circle(0 at var(--cx,50%) var(--cy,50%))}
+.pl-rays{position:absolute;left:50%;top:42%;width:160vmax;height:160vmax;translate:-50% -50%;opacity:.55;pointer-events:none;
+  background:repeating-conic-gradient(from 0deg,rgba(244,196,0,.1) 0deg 4deg,transparent 4deg 14deg);
+  -webkit-mask:radial-gradient(circle,#000 0%,transparent 55%);mask:radial-gradient(circle,#000 0%,transparent 55%);animation:plSpin 50s linear infinite}
+.pl.pl-burst .pl-rays{animation-duration:12s;opacity:.85;transition:opacity .4s}
+@keyframes plSpin{to{rotate:360deg}}
+.pl-dust{position:absolute;inset:0;pointer-events:none}
+.pl-dust i{position:absolute;bottom:-10px;width:var(--s);height:var(--s);border-radius:50%;background:#ffe36b;box-shadow:0 0 10px 2px rgba(244,196,0,.6);opacity:0;animation:plDust var(--life) linear var(--wait) infinite}
+@keyframes plDust{0%{opacity:0;transform:translate(0,0)}15%{opacity:.9}80%{opacity:.5}100%{opacity:0;transform:translate(var(--drift),-105vh)}}
+.pl-flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,#fff8d6,rgba(244,196,0,.35) 35%,transparent 70%);opacity:0;pointer-events:none}
+.pl-stage{position:relative;width:clamp(130px,22vmin,190px);aspect-ratio:160/238;animation:plStageIn .45s cubic-bezier(.22,1,.36,1) both}
+@keyframes plStageIn{from{opacity:0;transform:scale(.9)}}
+.pl-halo{position:absolute;inset:-30%;border-radius:50%;background:radial-gradient(circle,rgba(244,196,0,.4),transparent 62%);opacity:.35;animation:plHalo 2.6s ease-in-out infinite}
+.pl.pl-burst .pl-halo{opacity:.9}
+@keyframes plHalo{50%{transform:scale(1.08);opacity:.7}}
+.pl-crest{position:relative;width:100%;height:100%;overflow:visible}
+.pl-outline{fill:none;stroke:#f4c400;stroke-width:3;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 6px rgba(244,196,0,.85));animation:plDraw .9s cubic-bezier(.65,0,.35,1) .05s forwards}
+@keyframes plDraw{to{stroke-dashoffset:0}}
+#plRise{transform:translateY(238px)}
+.pl-star{position:absolute;z-index:2;width:16%;aspect-ratio:1;translate:0 0;background:#ffe36b;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);filter:drop-shadow(0 0 6px #f4c400);opacity:0}
+.pl-ring{position:absolute;left:50%;top:50%;z-index:1;width:100%;aspect-ratio:1;border-radius:50%;border:2px solid rgba(255,227,107,.85);box-shadow:0 0 24px rgba(244,196,0,.6),inset 0 0 18px rgba(244,196,0,.4);pointer-events:none}
+.pl-ring-mini{width:14%;border-width:1.5px}
+.pl-motto{display:flex;font-size:clamp(28px,5.4vw,50px);font-weight:900;letter-spacing:.08em;line-height:1;min-height:1em}
+.pl-motto span{display:inline-block;opacity:0;translate:0 70%;filter:blur(6px)}
+.pl-motto span.gold{color:#f4c400;text-shadow:0 0 24px rgba(244,196,0,.55)}
+.pl.pl-burst .pl-motto span{animation:plLetter .6s cubic-bezier(.16,1,.3,1) forwards;animation-delay:calc(var(--i) * 45ms)}
+@keyframes plLetter{to{opacity:1;translate:0 0;filter:none}}
+.pl-meta{display:grid;justify-items:center;gap:10px;animation:plStageIn .5s ease .3s both}
+.pl-year{font-size:clamp(22px,3vw,30px);font-weight:900;font-variant-numeric:tabular-nums;color:#ffe36b;letter-spacing:.08em}
+.pl-bar{width:min(260px,62vw);height:3px;border-radius:3px;background:rgba(255,255,255,.14);overflow:hidden}
+.pl-bar i{display:block;height:100%;background:linear-gradient(90deg,#f4c400,#fff3b0);transform-origin:left;transform:scaleX(0)}
+.pl-label{font-size:11px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.6);text-align:center;padding:0 16px}
+.pl-skip{position:absolute;bottom:22px;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.4);animation:plStageIn .6s ease 1.4s both}
+.pl.pl-out .pl-motto,.pl.pl-out .pl-meta,.pl.pl-out .pl-skip{opacity:0;transition:opacity .25s}
+@media(prefers-reduced-motion:reduce){
+  .pl{transition:opacity .3s;clip-path:none}
+  .pl.pl-out{opacity:0;clip-path:none}
+  .pl-rays,.pl-dust,.pl-halo{animation:none}
+  .pl-outline{stroke-dashoffset:0;animation:none}
+  #plRise{transform:none}
+  .pl-motto span{opacity:1;translate:none;filter:none}
+}
+
+/* =========================================================
+   CURSOR RING (mouse only)
+   ========================================================= */
+.cursor-ring,.cursor-dot{position:fixed;left:0;top:0;z-index:9000;pointer-events:none;border-radius:50%;opacity:0;transition:opacity .3s}
+.cursor-ring{width:38px;height:38px;margin:-19px 0 0 -19px;border:2px solid rgba(244,196,0,.85);transition:opacity .3s,width .25s,height .25s,margin .25s,background .25s,border-color .25s}
+.cursor-dot{width:6px;height:6px;margin:-3px 0 0 -3px;background:#0d5aa7}
+html.has-cursor .cursor-ring,html.has-cursor .cursor-dot{opacity:1}
+.cursor-ring.is-link{width:62px;height:62px;margin:-31px 0 0 -31px;background:rgba(244,196,0,.14);border-color:#f4c400}
+.cursor-ring.is-down{width:28px;height:28px;margin:-14px 0 0 -14px}
+
+/* =========================================================
+   FLOATING DOODLES in the banners (move with the mouse)
+   ========================================================= */
+.doodles{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.doodle{position:absolute;width:var(--size,46px);opacity:.75;translate:calc(var(--px,0) * var(--depth,1) * 1px) calc(var(--py,0) * var(--depth,1) * 1px);transition:translate .4s cubic-bezier(.22,1,.36,1)}
+.doodle svg{display:block;width:100%;height:auto;animation:doodleFloat var(--float,7s) ease-in-out var(--delay,0s) infinite;filter:drop-shadow(0 8px 18px rgba(0,0,0,.25))}
+@keyframes doodleFloat{0%,100%{transform:translateY(0) rotate(var(--r0,-6deg))}50%{transform:translateY(-16px) rotate(var(--r1,8deg))}}
+html.js .doodle{opacity:0}
+html.ready .doodle{animation:doodleIn .8s cubic-bezier(.22,1,.36,1) forwards;animation-delay:calc(.5s + var(--n,0) * .08s)}
+@keyframes doodleIn{from{opacity:0;scale:.4}to{opacity:.75;scale:1}}
+@media(max-width:760px){.doodle{--size:30px!important}.doodle.hide-sm{display:none}}
+
+/* =========================================================
+   HEADINGS: word-by-word reveal + hand-drawn squiggle
+   ========================================================= */
+.section-title h2 .w{display:inline-block}
+.section-title.reveal:not(.is-visible) h2 .w{opacity:0;translate:0 .6em;filter:blur(4px)}
+.section-title.reveal.is-visible h2 .w{animation:wordUp .7s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(.12s + var(--i) * .08s)}
+@keyframes wordUp{from{opacity:0;translate:0 .6em;filter:blur(4px)}to{opacity:1;translate:0 0;filter:none}}
+.squiggle{position:relative;white-space:nowrap}
+.squiggle svg{position:absolute;left:-4%;bottom:-.32em;width:108%;height:.42em;overflow:visible;pointer-events:none}
+.squiggle path{fill:none;stroke:#f4c400;stroke-width:6;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.section-title.is-visible .squiggle path,.section-title:not(.reveal) .squiggle path{animation:squiggleDraw .9s cubic-bezier(.65,0,.35,1) .55s forwards}
+@keyframes squiggleDraw{to{stroke-dashoffset:0}}
+.section-title h2.has-squiggle::after{display:none}
+
+/* =========================================================
+   CARDS: 3D tilt + spotlight
+   ========================================================= */
+.tilt{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));transition:transform .25s ease,box-shadow .35s,border-color .35s}
+.tilt:hover{--ty:-8px;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px))}
+
+/* =========================================================
+   MAGNETIC BUTTONS + logo wiggle
+   ========================================================= */
+.btn{translate:var(--bx,0px) var(--by,0px);transition:translate .25s cubic-bezier(.22,1,.36,1),transform .3s ease,background .3s,color .3s,box-shadow .3s,border-color .3s}
+.brand:hover .logo{animation:logoWiggle .7s ease}
+@keyframes logoWiggle{0%,100%{rotate:0deg}20%{rotate:-10deg}45%{rotate:8deg}70%{rotate:-4deg}}
+
+/* =========================================================
+   ORBITING ICONS around the principal's photo
+   ========================================================= */
+.orbit-wrap{position:relative}
+.orbit{position:absolute;inset:-34px;z-index:2;pointer-events:none;border:2px dashed rgba(13,90,167,.25);border-radius:50%;animation:orbitSpin 26s linear infinite}
+.orbit b{position:absolute;width:52px;height:52px;margin:-26px;display:grid;place-items:center;font-size:24px;background:#fff;border-radius:50%;box-shadow:0 10px 26px rgba(6,43,89,.18);animation:orbitSpin 26s linear infinite reverse}
+.orbit b:nth-child(1){left:50%;top:0}
+.orbit b:nth-child(2){left:100%;top:50%}
+.orbit b:nth-child(3){left:50%;top:100%}
+.orbit b:nth-child(4){left:0;top:50%}
+@keyframes orbitSpin{to{rotate:360deg}}
+@media(max-width:600px){.orbit{inset:-18px}.orbit b{width:40px;height:40px;margin:-20px;font-size:18px}}
+
+/* =========================================================
+   GLOWING ORBS (visit band) + moving dot grid
+   ========================================================= */
+.glow-orb{position:absolute;border-radius:50%;filter:blur(50px);opacity:.55;pointer-events:none;animation:blobFloat 10s ease-in-out infinite alternate}
+.visit-band-inner{z-index:1}
+.dot-grid{position:relative;isolation:isolate}
+.dot-grid::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(rgba(13,90,167,.16) 1.6px,transparent 1.7px);background-size:26px 26px;
+  -webkit-mask:linear-gradient(180deg,transparent,#000 18%,#000 82%,transparent);mask:linear-gradient(180deg,transparent,#000 18%,#000 82%,transparent);
+  animation:dotDrift 22s linear infinite}
+@keyframes dotDrift{to{background-position:52px 52px}}
+
+/* Second marquee row, going the other way */
+.stream-marquee.reverse{background:var(--navy);border-bottom:0}
+.stream-marquee.reverse .marquee-track{animation-direction:reverse;animation-duration:36s}
+.stream-marquee.reverse span{color:#fff}
+.stream-marquee.reverse i{color:var(--gold);opacity:1}
+
+@media(prefers-reduced-motion:reduce){
+  .doodle svg,.orbit,.orbit b,.glow-orb,.dot-grid::before{animation:none}
+  html.js .doodle{opacity:.75;animation:none}
+  .section-title.reveal:not(.is-visible) h2 .w{opacity:1;translate:none;filter:none}
+  .squiggle path{stroke-dashoffset:0;animation:none!important}
+  .tilt{transform:none!important}
+  .cursor-ring,.cursor-dot{display:none}
+}
+
+/* Keep the orbiting icons clear of the principal's name below the photo */
+.principal-figure .orbit-wrap{margin:34px 34px 66px}
+@media(max-width:600px){.principal-figure .orbit-wrap{margin:18px 18px 44px}}
+
+/* Orbit: icons travel along the oval (moved by fx.js), the ring itself stays put */
+.orbit{animation:none}
+.orbit b{left:0!important;top:0!important;animation:none;will-change:transform}
