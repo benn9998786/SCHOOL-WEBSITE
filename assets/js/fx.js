@@ -78,7 +78,7 @@
     const orbit = document.createElement('div');
     orbit.className = 'orbit';
     orbit.setAttribute('aria-hidden', 'true');
-    orbit.innerHTML = '<b>📚</b><b>🎓</b><b>⚽</b><b>🎨</b>';
+    orbit.innerHTML = ['book', 'grad', 'ball', 'palette'].map(n => `<b><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-${n}"></use></svg></b>`).join('');
     wrap.appendChild(orbit);
     const icons = [...orbit.children];
     let angle = 0, last = 0, visible = false;
@@ -121,6 +121,23 @@
     copy.classList.add('reverse');
     m.after(copy);
   });
+
+  /* ---------- Keyboard: gallery photos open with Enter/Space, focus moves into the lightbox ---------- */
+  document.querySelectorAll('#gallery-showcase .gallery-item').forEach(item => {
+    const label = item.querySelector('.gallery-label');
+    item.tabIndex = 0;
+    item.setAttribute('role', 'button');
+    item.setAttribute('aria-label', 'Open photo: ' + (label ? label.textContent : 'gallery photo'));
+    item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); item.click(); } });
+  });
+  const lb = document.querySelector('.lightbox');
+  if (lb) {
+    let opener = null;
+    new MutationObserver(() => {
+      if (lb.classList.contains('open')) { opener = document.activeElement; lb.querySelector('.lightbox-close').focus(); }
+      else if (opener) { opener.focus(); opener = null; }
+    }).observe(lb, {attributes: true, attributeFilter: ['class']});
+  }
 
   if (reduce) return;
 

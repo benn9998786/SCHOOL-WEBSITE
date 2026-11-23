@@ -146,3 +146,43 @@ html.ready .doodle{animation:doodleIn .8s cubic-bezier(.22,1,.36,1) forwards;ani
 /* Orbit: icons travel along the oval (moved by fx.js), the ring itself stays put */
 .orbit{animation:none}
 .orbit b{left:0!important;top:0!important;animation:none;will-change:transform}
+
+/* =========================================================
+   UX POLISH (accessibility, touch, typography, icons)
+   ========================================================= */
+/* Type: one heading family for every page, readable system body text */
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+h1,h2,h3,h4,.brand-name,.ph-title,.pl-motto,.pl-year,.stat strong,.timeline-year,.btn{font-family:"Plus Jakarta Sans","Segoe UI",system-ui,sans-serif}
+.brand .brand-name{display:block}
+
+/* Contrast: darker grey body text and gold labels so small text passes 4.5:1 */
+:root{--muted:#55647a}
+.eyebrow{color:#8a6500}
+.chip-arrow{color:#b68a00}
+
+/* Line icons that replaced the emoji */
+.ico{width:1em;height:1em;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.14em}
+.icon,.chip-icon,.category-icon{color:var(--blue)}
+.icon .ico,.chip-icon .ico,.category-icon .ico{width:1.05em;height:1.05em}
+.stream-chip:hover .chip-icon{color:#fff}
+.orbit b{color:var(--blue)}
+.topbar .ico,.footer-col .ico{color:var(--gold);margin-right:4px}
+.announcement-label .ico{margin-right:6px}
+
+/* Touch: every control gets at least a 44px hit area */
+.dot,.sayings-dots button{position:relative}
+.dot::after,.sayings-dots button::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;translate:-50% -50%}
+.dot{width:12px;height:12px}
+.arrow{width:46px;height:46px}
+.gallery-filters button{min-height:44px}
+.scroll-cue::after{content:"";position:absolute;inset:-8px -10px}
+.breadcrumb a{display:inline-block;padding:12px 4px;margin:-12px -2px}
+
+/* Small text: nothing under 12px */
+.sayings-foot,.pl-label,.pl-skip{font-size:12px}
+@media(max-width:540px){.highlight span,.announcement-label{font-size:12px}}
+
+/* Keyboard: skip link + visible focus on clickable photos */
+.skip-link{position:absolute;left:16px;top:-80px;z-index:10001;padding:12px 18px;border-radius:10px;background:var(--navy);color:#fff;font-weight:800;box-shadow:var(--shadow);transition:top .2s}
+.skip-link:focus{top:16px}
+.gallery-item:focus-visible,.teaser-item:focus-visible,.stream-chip:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
