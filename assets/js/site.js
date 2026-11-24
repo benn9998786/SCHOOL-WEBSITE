@@ -57,6 +57,16 @@
     return b;
   });
 
+  /* Make sure a slide has its photo before it is shown (slides 2+ wait in data-src) */
+  function loadSlide(s){
+    const img = s && s.querySelector('img[data-src]');
+    if (!img) return;
+    if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+    img.src = img.dataset.src;
+    img.removeAttribute('data-src');
+    img.removeAttribute('data-srcset');
+  }
+
   let current = 0, anim = null, paused = false, visible = true;
   slides[0].classList.add('is-active');
 
@@ -64,6 +74,8 @@
     i = (i + total) % total;
     if (i === current) return;
     const old = slides[current], next = slides[i];
+    loadSlide(next);
+    loadSlide(slides[(i + 1) % total]);   // get the one after ready too
     slider.classList.toggle('from-left', dir < 0);
     slides.forEach(s => s.classList.remove('is-leaving'));
     old.classList.remove('is-active');
@@ -123,6 +135,7 @@
     if (dx > 50) go(current - 1, -1); else if (dx < -50) go(current + 1, 1);
   });
 
+  loadSlide(slides[1]);   // the second slide is ready before the first change
   update();
   restart();
 })();
