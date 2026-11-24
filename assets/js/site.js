@@ -1,39 +1,130 @@
 /* Fr. Agnel Higher Secondary School — shared scripts (all pages) */
-/* Slideshow (home page) */
+/* Facilities slideshow (home page): wipe-in slides, slow zoom, glass captions,
+   progress bar, thumbnail rail, keyboard + swipe. Pauses on hover/focus or off screen. */
 (function(){
-  const slidesEl = document.getElementById('slides');
-  if (!slidesEl) return;
-  const slideEls = slidesEl.querySelectorAll('.slide');
-  const dotsEl = document.getElementById('dots');
+  const slider = document.getElementById('slider');
+  if (!slider) return;
+  const slides = [...slider.querySelectorAll('.slide')];
+  const total = slides.length;
+  if (!total) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
-  let current = 0, autoplayTimer;
-  const total = slideEls.length;
-  slideEls.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', 'Show slide ' + (i + 1));
-    dot.addEventListener('click', () => goTo(i));
-    dotsEl.appendChild(dot);
+  const thumbsEl = document.getElementById('sliderThumbs');
+  const DURATION = 5500;
+  const pad = n => String(n).padStart(2, '0');
+  const titleOf = s => (s.querySelector('h3') || {}).textContent ? s.querySelector('h3').textContent.trim() : '';
+
+  slider.classList.add('is-enhanced');
+  slides.forEach((s, i) => {
+    s.setAttribute('role', 'group');
+    s.setAttribute('aria-roledescription', 'slide');
+    s.setAttribute('aria-label', (i + 1) + ' of ' + total + ': ' + titleOf(s));
+    const cap = s.querySelector('.caption');
+    if (cap) {
+      const tag = document.createElement('span');
+      tag.className = 'cap-tag';
+      tag.textContent = 'Facility ' + pad(i + 1) + ' / ' + pad(total);
+      cap.prepend(tag);
+    }
   });
-  const dotEls = dotsEl.querySelectorAll('.dot');
-  function update(){
-    slidesEl.style.transform = 'translateX(-' + (current * 100) + '%)';
-    dotEls.forEach((d, i) => d.classList.toggle('active', i === current));
+
+  const count = document.createElement('div');
+  count.className = 'slide-count';
+  count.setAttribute('aria-hidden', 'true');
+  count.innerHTML = '<b>01</b><span>/ ' + pad(total) + '</span>';
+  slider.appendChild(count);
+
+  const prog = document.createElement('div');
+  prog.className = 'slider-progress';
+  prog.setAttribute('aria-hidden', 'true');
+  prog.innerHTML = '<i></i>';
+  slider.appendChild(prog);
+  const bar = prog.firstChild;
+
+  /* Thumbnail rail built from the slides themselves */
+  const thumbs = slides.map((s, i) => {
+    if (!thumbsEl) return null;
+    const img = s.querySelector('img');
+    const src = (img.dataset.src || img.getAttribute('src')).replace('images/', 'images/800/');
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'thumb';
+    b.setAttribute('aria-label', 'Show ' + titleOf(s));
+    b.innerHTML = '<img src="' + src + '" alt="" loading="lazy" decoding="async"><span>' + titleOf(s) + '</span>';
+    b.addEventListener('click', () => go(i, i > current ? 1 : -1));
+    thumbsEl.appendChild(b);
+    return b;
+  });
+
+  let current = 0, anim = null, paused = false, visible = true;
+  slides[0].classList.add('is-active');
+
+  function go(i, dir){
+    i = (i + total) % total;
+    if (i === current) return;
+    const old = slides[current], next = slides[i];
+    slider.classList.toggle('from-left', dir < 0);
+    slides.forEach(s => s.classList.remove('is-leaving'));
+    old.classList.remove('is-active');
+    old.classList.add('is-leaving');
+    void next.offsetWidth;               // restart the zoom and caption animations
+    next.classList.add('is-active');
+    setTimeout(() => old.classList.remove('is-leaving'), 1000);
+    current = i;
+    update();
+    restart();
   }
-  function goTo(i){ current = (i + total) % total; update(); resetAutoplay(); }
-  const next = () => goTo(current + 1), prev = () => goTo(current - 1);
-  function resetAutoplay(){ clearInterval(autoplayTimer); autoplayTimer = setInterval(next, 4500); }
-  nextBtn.addEventListener('click', next);
-  prevBtn.addEventListener('click', prev);
-  let touchStartX = 0;
-  const sliderEl = document.getElementById('slider');
-  sliderEl.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX, {passive:true});
-  sliderEl.addEventListener('touchend', e => {
-    const diff = e.changedTouches[0].clientX - touchStartX;
-    if (diff > 50) prev(); else if (diff < -50) next();
+
+  function update(){
+    count.querySelector('b').textContent = pad(current + 1);
+    thumbs.forEach((t, k) => {
+      if (!t) return;
+      t.classList.toggle('is-active', k === current);
+      t.setAttribute('aria-current', k === current ? 'true' : 'false');
+    });
+    const t = thumbs[current];
+    if (t && thumbsEl.scrollWidth > thumbsEl.clientWidth) {
+      thumbsEl.scrollTo({ left: t.offsetLeft - thumbsEl.clientWidth / 2 + t.offsetWidth / 2, behavior: reduce ? 'auto' : 'smooth' });
+    }
+  }
+
+  /* Autoplay driven by the progress bar; none at all for reduced motion */
+  function restart(){
+    if (anim) anim.cancel();
+    if (reduce) return;
+    anim = bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: DURATION, easing: 'linear', fill: 'forwards' });
+    anim.onfinish = () => go(current + 1, 1);
+    if (paused || !visible) anim.pause();
+  }
+  function setPaused(p){
+    paused = p;
+    slider.classList.toggle('is-paused', p);
+    if (anim) (paused || !visible) ? anim.pause() : anim.play();
+  }
+  slider.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') setPaused(true); });
+  slider.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') setPaused(false); });
+  slider.addEventListener('focusin', () => setPaused(true));
+  slider.addEventListener('focusout', e => { if (!slider.contains(e.relatedTarget)) setPaused(false); });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; setPaused(paused); }, { threshold: 0.25 }).observe(slider);
+  }
+
+  prevBtn && prevBtn.addEventListener('click', () => go(current - 1, -1));
+  nextBtn && nextBtn.addEventListener('click', () => go(current + 1, 1));
+  slider.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1, -1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1, 1); }
   });
-  resetAutoplay();
+  let touchX = 0;
+  slider.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  slider.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (dx > 50) go(current - 1, -1); else if (dx < -50) go(current + 1, 1);
+  });
+
+  update();
+  restart();
 })();
 
 /* Mobile menu */

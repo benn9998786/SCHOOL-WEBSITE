@@ -13,7 +13,7 @@
 <section class="hero" id="home" aria-label="Welcome to Fr. Agnel Higher Secondary School">
   <div class="hero-bg" aria-hidden="true"></div>
   <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
-  <a href="#history" class="scroll-cue" aria-label="Scroll to Our Story"><span></span></a>
+  <a href="#facilities" class="scroll-cue" aria-label="Scroll to Our Facilities"><span></span></a>
   <svg class="spin-seal hero-seal" viewBox="0 0 200 200" aria-hidden="true">
     <defs><path id="sealPath" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs>
     <circle cx="100" cy="100" r="97" fill="rgba(3,23,47,.45)" stroke="rgba(244,196,0,.6)" stroke-width="1.5"/>
@@ -44,7 +44,14 @@
   </div>
 </section>
 
-<div class="slider" id="slider">
+<section class="section facilities" id="facilities">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Explore the Campus</span>
+      <h2>Our Facilities</h2>
+      <p>Classrooms, labs, workshops and spaces where learning comes alive.</p>
+    </div>
+<div class="slider" id="slider" tabindex="0" aria-roledescription="carousel" aria-label="School facilities">
   <div class="slides" id="slides">
  
     <!-- Slide 1: replace the file with your own photo in the images/ folder -->
@@ -111,8 +118,10 @@
   <button class="arrow prev" id="prevBtn" aria-label="Previous slide">&#10094;</button>
   <button class="arrow next" id="nextBtn" aria-label="Next slide">&#10095;</button>
  
-  <div class="dots" id="dots"></div>
 </div>
+    <div class="slider-thumbs" id="sliderThumbs" aria-label="Choose a facility"></div>
+  </div>
+</section>
 
 <section class="section welcome-teaser" id="welcome">
   <div class="container welcome-grid">
