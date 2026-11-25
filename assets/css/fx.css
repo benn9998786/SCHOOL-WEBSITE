@@ -268,3 +268,11 @@ h1,h2,h3,h4,.brand-name,.ph-title,.pl-motto,.pl-year,.stat strong,.timeline-year
 .notfound h1{color:var(--navy);font-size:clamp(36px,6vw,60px);margin:10px 0 14px}
 .notfound p{color:var(--muted);font-size:18px;margin-bottom:28px}
 .notfound .btn-row{justify-content:center}
+
+/* Instagram links */
+.social a.social-ig{width:auto;height:44px;padding:0 18px 0 14px;gap:8px;border-radius:99px;font-size:14px;font-weight:700;color:#fff;border-color:rgba(255,255,255,.35)}
+.social a.social-ig .ico{width:20px;height:20px;color:var(--gold);margin:0;transition:color .25s}
+.social a.social-ig:hover .ico{color:var(--navy2)}
+.topbar-ig{color:#fff;font-weight:700;white-space:nowrap;transition:color .2s}
+.topbar-ig:hover{color:var(--gold)}
+.topbar .topbar-ig .ico{margin-right:4px}

@@ -38,6 +38,7 @@ const SCHOOL = {
   hasMap: 'https://www.google.com/maps?q=15.440062,73.893360',
   telephone: '+91-9423747736',
   email: 'fahsspilar@gmail.com',
+  sameAs: ['https://www.instagram.com/fr.agnelhsspilar/'],
   contactPoint: [{ '@type': 'ContactPoint', telephone: '+91-832-2218589', contactType: 'customer support', areaServed: 'IN', availableLanguage: ['English', 'Konkani', 'Hindi'] }],
   openingHoursSpecification: [
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '16:00' },
