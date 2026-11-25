@@ -10,7 +10,8 @@
  *   src/pages/*.html             the content of each page
  *   PAGES (below)                page titles, descriptions and page-header pictures
  *
- * It writes index.html, about.html, academics.html, gallery.html and contact.html.
+ * It writes index.html, about.html, academics.html, gallery.html, contact.html and 404.html,
+ * plus sitemap.xml, robots.txt and site.webmanifest (search data lives in src/partials/seo.js).
  * Shared styles live in assets/css/site.css + fx.css, scripts in assets/js/site.js + fx.js.
  */
 const fs = require('fs');
@@ -18,6 +19,7 @@ const path = require('path');
 const root = __dirname;
 const read = rel => fs.readFileSync(path.join(root, rel), 'utf8');
 const { sprite, iconize } = require('./src/partials/icons.js');
+const { headTags, sitemap, robots, manifest } = require('./src/partials/seo.js');
 
 const SITE = 'Fr. Agnel Higher Secondary School, Pilar';
 
@@ -46,27 +48,32 @@ const GRAPHICS = {
 
 const PAGES = [
   { key: 'home', file: 'index.html', src: 'src/pages/home.html',
-    title: `${SITE} | Always Higher`,
-    description: 'Fr. Agnel Higher Secondary School, Pilar, Goa: Arts, Commerce, Science and vocational streams since 1979. Always Higher.',
+    title: 'Fr. Agnel Higher Secondary School, Pilar, Goa | Std XI & XII',
+    description: 'Fr. Agnel Higher Secondary School, Pilar, Goa offers Std XI & XII in Arts, Commerce, Science and four vocational courses. Always Higher, since 1979.',
+    crumb: 'Home', imageAlt: 'Fr. Agnel Higher Secondary School building, Pilar, Goa', sitemapImages: ['images/school-campus-wide.jpg', 'images/logo.png', 'images/event-sports-day.jpg', 'images/event-creative-canvas-1.jpg'],
     hero: 'images/school-campus-wide.jpg' },
   { key: 'about', file: 'about.html', src: 'src/pages/about.html',
-    title: `About Us | ${SITE}`,
-    description: "Our principal's message, our story since 1979, our principals, vision, patron Ven. Fr. Agnelo de Souza, values, staff and school prayer.",
+    title: 'About Us: History, Principal & Patron | Fr. Agnel HSS Pilar',
+    description: 'Our history since 1979, the principal\'s message, past principals, vision, patron Ven. Fr. Agnelo de Souza and staff of Fr. Agnel HSS, Pilar, Goa.',
+    crumb: 'About Us', imageAlt: 'Staff of Fr. Agnel Higher Secondary School, Pilar', sitemapImages: ['images/teachers-jpeg.jpg', 'images/principal.jpg'],
     hero: 'images/teachers-jpeg.jpg', eyebrow: 'Since 1979', words: ['About', 'Us'],
     subtitle: 'Our story, our people and the values that guide us, Always Higher.' },
   { key: 'academics', file: 'academics.html', src: 'src/pages/academics.html',
-    title: `Academics | ${SITE}`,
-    description: 'Arts, Commerce and Science streams plus vocational courses in Auto Engineering, Computer Technique, Business and Insurance, and Office Management.',
+    title: 'Courses & Streams (Std XI-XII) | Fr. Agnel HSS, Pilar, Goa',
+    description: 'Std XI-XII streams at Fr. Agnel HSS, Pilar: Arts, Commerce, Science and vocational Auto Engineering, Computer Technique, Business & Insurance, Office Management.',
+    crumb: 'Academics', imageAlt: 'Science practicals at Fr. Agnel Higher Secondary School, Pilar',
     hero: 'images/pilar-hss-9-jpg.jpg', eyebrow: 'Learning Pathways', words: ['Our', 'Academics'],
     subtitle: 'Three general streams and four vocational courses for Std XI and XII.' },
   { key: 'gallery', file: 'gallery.html', src: 'src/pages/gallery.html',
-    title: `Gallery & Events | ${SITE}`,
-    description: 'Recent events and photos from Fr. Agnel Higher Secondary School: Sports Day, Creative Canvas, celebrations, culture and campus life.',
+    title: 'Gallery & Events | Fr. Agnel Higher Secondary School, Pilar',
+    description: 'Photos and recent events at Fr. Agnel Higher Secondary School, Pilar, Goa: Sports Day, Creative Canvas, celebrations, culture, faith and campus life.',
+    crumb: 'Gallery', imageAlt: 'Creative Canvas 2026 performance at Fr. Agnel HSS, Pilar', sitemapImages: ['images/event-creative-canvas-1.jpg', 'images/event-sports-day.jpg', 'images/event-exposure-tour.jpg', 'images/event-creative-canvas-2.jpg', 'images/pilar-hss-20-jpg.jpg'],
     hero: 'images/event-creative-canvas-1.jpg', eyebrow: 'Life at Fr. Agnel', words: ['Gallery', '&amp; Events'],
     subtitle: 'Celebrations, culture, learning and faith on our campus.' },
   { key: 'contact', file: 'contact.html', src: 'src/pages/contact.html',
-    title: `Contact Us | ${SITE}`,
-    description: 'Address, phone, email, school hours and map for Fr. Agnel Higher Secondary School, Pilar, Tiswadi, Goa 403203.',
+    title: 'Contact Us & Directions | Fr. Agnel HSS, Pilar, Goa',
+    description: 'Contact Fr. Agnel Higher Secondary School, Pilar, Tiswadi, Goa 403203: phone 9423747736, office 0832-2218589, email, school hours and map directions.',
+    crumb: 'Contact', imageAlt: 'Fr. Agnel Higher Secondary School building, Pilar, Goa',
     hero: 'images/school-campus-wide.jpg', eyebrow: 'Get in Touch', words: ['Contact', 'Us'],
     subtitle: 'We would love to hear from you or welcome you on campus.' },
 ];
@@ -107,26 +114,20 @@ const header = read('src/partials/header.html');
 const footer = read('src/partials/footer.html');
 const preloader = read('src/partials/preloader.html');
 
-for (const p of PAGES) {
+function render(p, rawContent) {
   const nav = NAV.map(([key, href, label]) => key === p.key
     ? `                <li><a href="${href}" class="active" aria-current="page">${label}</a></li>`
     : `                <li><a href="${href}">${label}</a></li>`).join('\n');
-  const content = fixLinks(read(p.src), p.key);
+  const content = fixLinks(rawContent, p.key);
   const preloadHero = p.key === 'home'
     ? `<link rel="preload" as="image" href="${p.hero}" imagesrcset="${p.hero.replace('images/', 'images/800/')} 800w, ${p.hero} 1600w" imagesizes="100vw" fetchpriority="high">`
     : `<link rel="preload" as="image" href="${p.hero}" imagesrcset="${p.hero.replace('images/', 'images/800/')} 800w, ${p.hero} 1600w" imagesizes="100vw" fetchpriority="high">`;
   const html = `<!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${p.title}</title>
-<meta name="description" content="${p.description}">
-<meta property="og:title" content="${p.title}">
-<meta property="og:description" content="${p.description}">
-<meta property="og:image" content="${p.hero}">
-<meta name="theme-color" content="#062b59">
-<link rel="icon" type="image/png" href="images/logo.png">
+${headTags(p)}
 ${preloadHero}
 <link rel="preload" as="image" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -144,7 +145,7 @@ ${sprite}
 ${preloader}
 ${fixLinks(header.replace('{{NAV}}', nav), p.key)}
 <main id="main">
-${p.key === 'home' ? '' : pageHero(p) + '\n\n'}${content}
+${p.key === 'home' || p.noHero ? '' : pageHero(p) + '\n\n'}${content}
 </main>
 
 ${fixLinks(footer, p.key)}
@@ -154,3 +155,18 @@ ${fixLinks(footer, p.key)}
   fs.writeFileSync(path.join(root, p.file), iconize(html));
   console.log('built', p.file.padEnd(15), (Buffer.byteLength(html) / 1024).toFixed(1) + ' KB');
 }
+
+for (const p of PAGES) render(p, read(p.src));
+
+/* Friendly "page not found" page (not indexed by search engines) */
+render({
+  key: 'notfound', file: '404.html', noHero: true, noindex: true, hero: 'images/school-campus-wide.jpg',
+  title: 'Page Not Found | Fr. Agnel Higher Secondary School, Pilar',
+  description: 'Sorry, that page could not be found. Visit the home page of Fr. Agnel Higher Secondary School, Pilar, Goa.',
+}, read('src/pages/404.html'));
+
+/* Search engine files */
+fs.writeFileSync(path.join(root, 'sitemap.xml'), sitemap(PAGES));
+fs.writeFileSync(path.join(root, 'robots.txt'), robots());
+fs.writeFileSync(path.join(root, 'site.webmanifest'), manifest());
+console.log('built sitemap.xml, robots.txt, site.webmanifest');

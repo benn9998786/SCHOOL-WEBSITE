@@ -261,3 +261,10 @@ h1,h2,h3,h4,.brand-name,.ph-title,.pl-motto,.pl-year,.stat strong,.timeline-year
   .welcome-grid .orbit-wrap{margin:26px 28px}
   .principal-figure .orbit-wrap{margin:26px 28px 48px}
 }
+
+/* 404 page */
+.notfound{min-height:60vh;display:flex;align-items:center;text-align:center;background:linear-gradient(180deg,#f7faff,#fff)}
+.notfound-inner{max-width:640px}
+.notfound h1{color:var(--navy);font-size:clamp(36px,6vw,60px);margin:10px 0 14px}
+.notfound p{color:var(--muted);font-size:18px;margin-bottom:28px}
+.notfound .btn-row{justify-content:center}

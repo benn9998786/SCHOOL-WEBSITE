@@ -1,0 +1,7 @@
+# Fr. Agnel Higher Secondary School, Pilar
+User-agent: *
+Allow: /
+Disallow: /src/
+Disallow: /build.js
+
+Sitemap: https://fragnelhsspilar.in/sitemap.xml
