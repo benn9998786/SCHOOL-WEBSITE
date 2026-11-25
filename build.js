@@ -56,7 +56,7 @@ const PAGES = [
     subtitle: 'Our story, our people and the values that guide us, Always Higher.' },
   { key: 'academics', file: 'academics.html', src: 'src/pages/academics.html',
     title: `Academics | ${SITE}`,
-    description: 'Arts, Commerce and Science streams plus vocational courses in Auto Engineering, Computer Technique, Business and Insurance, and Office Secretaryship.',
+    description: 'Arts, Commerce and Science streams plus vocational courses in Auto Engineering, Computer Technique, Business and Insurance, and Office Management.',
     hero: 'images/pilar-hss-9-jpg.jpg', eyebrow: 'Learning Pathways', words: ['Our', 'Academics'],
     subtitle: 'Three general streams and four vocational courses for Std XI and XII.' },
   { key: 'gallery', file: 'gallery.html', src: 'src/pages/gallery.html',
