@@ -311,3 +311,13 @@ h1,h2,h3,h4,.hero-title,.brand-name,.ph-title,.pl-motto,.pl-year,.stat strong,.t
   .notice{grid-template-columns:1fr;gap:4px;padding:14px 16px}
   .notice-link{padding:6px 0 0}
 }
+
+/* Announcement bar when animations are turned off: the text stays still and in view
+   (the scrolling version starts off-screen, which left the bar looking empty) */
+@media (prefers-reduced-motion:reduce){
+  .ticker{white-space:normal;padding:6px 14px}
+  .ticker-content{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;padding:0;animation:none!important;transform:none;line-height:1.35}
+}
+@media (prefers-reduced-motion:reduce) and (max-width:540px){
+  .ticker{padding:6px 10px}.ticker-content{font-size:13px}
+}
