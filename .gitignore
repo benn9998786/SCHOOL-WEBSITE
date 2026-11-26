@@ -1,0 +1,7 @@
+# Local editor / assistant settings (only valid on one computer)
+.claude/
+
+# Other projects that sit in this folder but are not part of the school website
+/Bridge-/
+/FORGED/
+/Her/
