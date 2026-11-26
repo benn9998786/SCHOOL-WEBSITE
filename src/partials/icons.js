@@ -25,6 +25,8 @@ const SYMBOLS = {
   cross:     '<path d="M12 3v18M7 8h10"/>',
   car:       '<path d="M5 16h14v-3l-2-5H7l-2 5z"/><path d="M4 13h16"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/>',
   instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/>',
+  facebook:  '<path d="M15.5 3H13a4 4 0 0 0-4 4v2.5H6.5V13H9v8h3.5v-8h2.6l.5-3.5h-3.1V7.3c0-.7.5-1.1 1.1-1.1h1.9z"/>',
+  youtube:   '<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"/>',
   shield:    '<path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/>',
 };
 

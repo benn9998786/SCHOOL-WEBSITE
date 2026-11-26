@@ -19,7 +19,7 @@ const path = require('path');
 const root = __dirname;
 const read = rel => fs.readFileSync(path.join(root, rel), 'utf8');
 const { sprite, iconize } = require('./src/partials/icons.js');
-const { headTags, sitemap, robots, manifest } = require('./src/partials/seo.js');
+const { headTags, faqHtml, sitemap, robots, manifest } = require('./src/partials/seo.js');
 
 const SITE = 'Fr. Agnel Higher Secondary School, Pilar';
 
@@ -118,7 +118,7 @@ function render(p, rawContent) {
   const nav = NAV.map(([key, href, label]) => key === p.key
     ? `                <li><a href="${href}" class="active" aria-current="page">${label}</a></li>`
     : `                <li><a href="${href}">${label}</a></li>`).join('\n');
-  const content = fixLinks(rawContent, p.key);
+  const content = fixLinks(rawContent.replace('<!-- FAQ -->', faqHtml), p.key);
   const preloadHero = p.key === 'home'
     ? `<link rel="preload" as="image" href="${p.hero}" imagesrcset="${p.hero.replace('images/', 'images/800/')} 800w, ${p.hero} 1600w" imagesizes="100vw" fetchpriority="high">`
     : `<link rel="preload" as="image" href="${p.hero}" imagesrcset="${p.hero.replace('images/', 'images/800/')} 800w, ${p.hero} 1600w" imagesizes="100vw" fetchpriority="high">`;

@@ -17,7 +17,12 @@ const SCHOOL = {
   '@type': 'HighSchool',
   '@id': SITE_URL + '/#school',
   name: 'Fr. Agnel Higher Secondary School',
-  alternateName: ['Fr. Agnel HSS, Pilar', 'Fr. Agnel Higher Secondary School, Pilar', 'Fr Agnel Higher Secondary School Pilar Goa'],
+  /* The ways people write the name, so searches for any of them match this school */
+  alternateName: [
+    'Fr. Agnel Higher Secondary School, Pilar', 'Fr Agnel Higher Secondary School Pilar Goa',
+    'Fr. Agnel HSS', 'Fr. Agnel HSS, Pilar', 'Fr Agnel HSS Pilar', 'Father Agnel Higher Secondary School',
+    'Fr. Agnel Higher Secondary School Pilar Goa', 'Agnel Higher Secondary School Pilar',
+  ],
   url: SITE_URL + '/',
   logo: abs('images/logo.png'),
   image: [abs('images/school-campus-wide.jpg'), abs('images/teachers-jpeg.jpg')],
@@ -38,7 +43,12 @@ const SCHOOL = {
   hasMap: 'https://www.google.com/maps?q=15.440062,73.893360',
   telephone: '+91-9423747736',
   email: 'fahsspilar@gmail.com',
-  sameAs: ['https://www.instagram.com/fr.agnelhsspilar/'],
+  /* The school's official accounts elsewhere, so Google links them to this website */
+  sameAs: [
+    'https://www.instagram.com/fr.agnelhsspilar/',
+    'https://www.facebook.com/fragnelhsspilar/',
+    'https://www.youtube.com/c/FrAgnelHSSPilar',
+  ],
   contactPoint: [{ '@type': 'ContactPoint', telephone: '+91-832-2218589', contactType: 'customer support', areaServed: 'IN', availableLanguage: ['English', 'Konkani', 'Hindi'] }],
   openingHoursSpecification: [
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '16:00' },
@@ -57,6 +67,25 @@ const COURSES = [
   ['stream-oss', 'Office Management', 'Vocational course in office procedure and practice, accountancy, stenography and computer applications (for girls).'],
 ];
 
+/* Questions answered on the Home page, shown to visitors and given to Google as an FAQ */
+const FAQ = [
+  ['Where is Fr. Agnel Higher Secondary School?',
+   'Fr. Agnel Higher Secondary School is in Pilar, Tiswadi, Goa 403203, India. Directions and a map are on the <a href="contact.html">Contact page</a>.'],
+  ['Which classes and streams does the school offer?',
+   'The school teaches Std XI and XII. It offers the Arts, Commerce and Science streams and four vocational courses: Auto Engineering Technology, Computer Technique, Business and Insurance, and Office Management. See all <a href="academics.html">courses and subjects</a>.'],
+  ['Who runs Fr. Agnel Higher Secondary School, Pilar?',
+   'It is an English-medium school run by the Xaverian Educational Society (Pilar Fathers). It was founded in 1979 by Fr. Philomeno D’Costa and is named after Venerable Fr. Agnelo de Souza.'],
+  ['Is it the same as Fr. Agnel High School or Fr. Agnel Central School?',
+   'No. This is the website of Fr. Agnel Higher Secondary School (Std XI and XII) in Pilar. Fr. Agnel High School and Fr. Agnel Central School, also in Pilar, are separate schools, so please contact them directly.'],
+  ['How can I contact the school about admissions?',
+   'Call <a href="tel:+919423747736">9423747736</a> or <a href="tel:+918322218589">0832 2218589</a>, email <a href="mailto:fahsspilar@gmail.com">fahsspilar@gmail.com</a>, or visit the office Monday to Friday 8:00 AM to 4:00 PM and Saturday 8:00 AM to 12:30 PM.'],
+];
+const stripTags = h => h.replace(/<[^>]+>/g, '');
+
+function faqHtml() {
+  return FAQ.map(([q, a]) => `      <details class="faq-item"><summary>${q}</summary><div class="faq-a"><p>${a}</p></div></details>`).join('\n');
+}
+
 function jsonLd(p) {
   const url = pageUrl(p.file);
   const graph = [SCHOOL];
@@ -69,6 +98,11 @@ function jsonLd(p) {
     isPartOf: { '@id': SITE_URL + '/#website' }, about: { '@id': SCHOOL['@id'] },
     primaryImageOfPage: { '@type': 'ImageObject', url: abs(p.hero) },
   });
+  if (p.key === 'home') {
+    graph.push({ '@type': 'FAQPage', '@id': url + '#faq', mainEntity: FAQ.map(([q, a]) => ({
+      '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: stripTags(a) },
+    })) });
+  }
   if (p.key !== 'home' && p.crumb) {
     graph.push({ '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL + '/' },
@@ -113,8 +147,12 @@ function headTags(p) {
     `<meta name="geo.position" content="15.440062;73.893360">`,
     `<meta name="ICBM" content="15.440062, 73.893360">`,
     `<meta name="theme-color" content="#062b59">`,
-    `<link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32.png">`,
+    /* Google shows a site icon in search results; it prefers squares in multiples of 48px and /favicon.ico */
+    `<link rel="icon" href="favicon.ico" sizes="48x48">`,
+    `<link rel="icon" type="image/png" sizes="96x96" href="images/icons/favicon-96.png">`,
+    `<link rel="icon" type="image/png" sizes="144x144" href="images/icons/favicon-144.png">`,
     `<link rel="icon" type="image/png" sizes="192x192" href="images/icons/icon-192.png">`,
+    `<link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32.png">`,
     `<link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png">`,
     `<link rel="manifest" href="site.webmanifest">`,
     p.noindex ? '' : jsonLd(p),
@@ -161,4 +199,4 @@ const manifest = () => JSON.stringify({
   ],
 }, null, 2) + '\n';
 
-module.exports = { SITE_URL, headTags, sitemap, robots, manifest };
+module.exports = { SITE_URL, headTags, faqHtml, sitemap, robots, manifest };
