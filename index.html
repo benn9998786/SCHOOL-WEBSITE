@@ -302,6 +302,17 @@
   </div>
 </section>
 
+<!-- Filled from the notices Google Sheet by assets/js/notices.js; stays hidden if there are none -->
+<section class="notices" id="notices" aria-labelledby="notices-title" hidden>
+  <div class="container notices-inner">
+    <div class="notices-head">
+      <span class="eyebrow">Notice Board</span>
+      <h2 id="notices-title">Latest Notices</h2>
+    </div>
+    <ul class="notice-list" id="noticeList"></ul>
+  </div>
+</section>
+
 <section class="section facilities" id="facilities">
   <div class="container">
     <div class="section-title">
@@ -541,6 +552,8 @@
     </div>
   </div>
 </section>
+
+<script src="assets/js/notices.js" defer></script>
 
 </main>
 
