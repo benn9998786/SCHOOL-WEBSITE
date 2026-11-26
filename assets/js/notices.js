@@ -17,6 +17,8 @@
   const section = document.getElementById('notices');
   const list = document.getElementById('noticeList');
   if (!ticker && !list) return;
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let rotateTimer;
 
   const safeLink = u => /^https?:\/\/\S+$/i.test(String(u || '').trim()) ? String(u).trim() : '';
 
@@ -36,9 +38,23 @@
     if (!items || !items.length) return;
 
     if (ticker) {
-      ticker.textContent = items.map(n => n.text).join('   •   ');
-      const len = ticker.textContent.length;
-      ticker.style.animationDuration = Math.max(20, Math.round(len * 0.2)) + 's';
+      clearInterval(rotateTimer);
+      if (reduceMotion) {
+        /* No scrolling for visitors who turned animations off: show one notice at a time */
+        let i = 0;
+        ticker.textContent = items[0].text;
+        if (items.length > 1) {
+          rotateTimer = setInterval(() => {
+            if (ticker.matches(':hover')) return;
+            i = (i + 1) % items.length;
+            ticker.textContent = items[i].text;
+          }, 6000);
+        }
+      } else {
+        ticker.textContent = items.map(n => n.text).join('   •   ');
+        const len = ticker.textContent.length;
+        ticker.style.animationDuration = Math.max(20, Math.round(len * 0.2)) + 's';
+      }
     }
 
     if (list && section) {
