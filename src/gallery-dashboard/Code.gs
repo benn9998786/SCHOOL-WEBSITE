@@ -99,6 +99,19 @@ function setVisible(pin, id, visible) {
   return true;
 }
 
+/* Change a photo's caption and category after upload */
+function updatePhoto(pin, id, caption, cat) {
+  requirePin_(pin);
+  const text = clean_(caption, 120);
+  if (!text) throw new Error('Please type a caption.');
+  if (!CATEGORIES[cat]) throw new Error('Please choose a category.');
+  const row = findRow_(id);
+  store_().sheet.getRange(row, 3, 1, 2).setValues([[text, cat]]);
+  try { DriveApp.getFileById(id).setDescription(text); } catch (err) { /* file missing: list still updated */ }
+  clearCache_();
+  return true;
+}
+
 function deletePhoto(pin, id) {
   requirePin_(pin);
   const row = findRow_(id);

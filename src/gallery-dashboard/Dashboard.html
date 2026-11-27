@@ -3,66 +3,187 @@
 <head>
 <base target="_top">
 <meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#062b59;--navy2:#041d3c;--gold:#f4c400;--light:#f4f7fb;--muted:#5d6b7d;--line:#dbe3ee;--red:#b42318;--green:#067647}
-  *{box-sizing:border-box}
-  body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--light);color:#1d2b3a;font-size:16px}
-  header{background:var(--navy);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-  header h1{margin:0;font-size:19px}
-  header small{display:block;color:#ffe36b;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-  main{max-width:960px;margin:0 auto;padding:20px 16px 60px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:0 4px 14px rgba(6,43,89,.05)}
-  h2{margin:0 0 14px;font-size:18px;color:var(--navy)}
-  label{display:block;font-weight:700;font-size:14px;margin:14px 0 6px;color:var(--navy)}
-  input[type=text],input[type=password],select{width:100%;padding:12px;border:1px solid #b8c4d4;border-radius:10px;font:inherit;background:#fff}
-  input:focus,select:focus,button:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
-  .hint{color:var(--muted);font-size:13px;margin:4px 0 0}
-  button{font:inherit;font-weight:700;border:0;border-radius:10px;padding:12px 18px;cursor:pointer}
-  .primary{background:var(--gold);color:var(--navy2)}
-  .primary:disabled{opacity:.5;cursor:not-allowed}
-  .ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);padding:8px 12px;font-size:14px}
-  .drop{border:2px dashed #9fb0c6;border-radius:12px;padding:22px;text-align:center;background:var(--light);cursor:pointer}
-  .drop strong{color:var(--navy)}
-  .drop input{display:none}
-  .previews{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin-top:12px}
-  .previews img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .actions{margin-top:18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-  .msg{padding:12px 14px;border-radius:10px;margin-top:14px;font-weight:600}
-  .msg.ok{background:#ecfdf3;color:var(--green)}
-  .msg.err{background:#fef3f2;color:var(--red)}
-  .msg[hidden]{display:none}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-  .photo{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
-  .photo img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#e8edf4}
-  .photo.hidden img{opacity:.35}
-  .photo .info{padding:10px 12px;flex:1}
-  .photo .cap{font-weight:700;color:var(--navy);font-size:14px}
-  .photo .meta{color:var(--muted);font-size:12px;margin-top:4px}
-  .photo .tag{display:inline-block;font-size:11px;font-weight:800;padding:2px 8px;border-radius:99px;background:#e9eef6;color:var(--navy);margin-top:6px}
-  .photo .tag.off{background:#fef0c7;color:#7a5200}
-  .photo .btns{display:flex;border-top:1px solid var(--line)}
-  .photo .btns button{flex:1;border-radius:0;background:#fff;color:var(--navy);font-size:13px;padding:10px}
-  .photo .btns button+button{border-left:1px solid var(--line);color:var(--red)}
-  .empty{color:var(--muted)}
+  /* Same colours and fonts as fragnelhsspilar.in */
+  :root{
+    --navy:#062b59;--navy2:#041d3c;--blue:#0d5aa7;--gold:#f4c400;--gold2:#ffe36b;
+    --light:#f4f7fb;--text:#263548;--muted:#687789;--line:#e1e8f1;
+    --red:#b42318;--red-bg:#fef3f2;--green:#067647;--green-bg:#ecfdf3;
+    --shadow:0 12px 35px rgba(6,43,89,.12);--radius:18px;
+    --head:"Plus Jakarta Sans","Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",Arial,sans-serif;color:var(--text);line-height:1.6;background:var(--light);font-size:16px}
+  img{display:block;max-width:100%}
+  button,input,select{font:inherit;color:inherit}
+  h1,h2,h3,.brand-name,.btn,.stat strong,.chip{font-family:var(--head)}
+  .container{width:min(1100px,92%);margin:auto}
   [hidden]{display:none!important}
-  @media(max-width:560px){.row{grid-template-columns:1fr}header h1{font-size:17px}}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+  /* Header (like the website's) */
+  .site-header{background:#fff;box-shadow:0 2px 14px rgba(6,43,89,.08);position:sticky;top:0;z-index:20}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:12px}
+  .brand{display:flex;align-items:center;gap:12px;min-width:0}
+  .brand img{width:46px;height:46px;border-radius:50%;object-fit:contain;background:#fff;box-shadow:0 2px 8px rgba(6,43,89,.15)}
+  .brand-name{color:var(--navy);font-weight:700;font-size:17px;line-height:1.2}
+  .brand-sub{color:var(--muted);font-size:12px}
+  .lock{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:30px;padding:8px 14px;font-weight:700;font-size:14px;cursor:pointer;font-family:var(--head)}
+  .lock:hover{border-color:var(--navy)}
+
+  /* Banner with campus photo */
+  .hero{position:relative;color:#fff;background:var(--navy2) url("https://fragnelhsspilar.in/images/800/school-campus-wide.jpg") center/cover;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,25,53,.95) 0%,rgba(4,37,76,.82) 55%,rgba(4,37,76,.45) 100%)}
+  .hero-inner{position:relative;padding:44px 0 92px}
+  .eyebrow{display:inline-block;color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+  .badge{display:inline-block;padding:6px 14px;border:1px solid rgba(244,196,0,.65);background:rgba(244,196,0,.14);color:var(--gold2);border-radius:30px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+  .hero h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin:14px 0 8px}
+  .hero h1 span{color:var(--gold)}
+  .hero p{color:#dce7f5;max-width:560px}
+  .stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+  .stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:10px 16px;min-width:120px;backdrop-filter:blur(6px)}
+  .stat strong{display:block;font-size:24px;line-height:1.1;color:#fff}
+  .stat span{font-size:12px;color:#cfdced}
+
+  /* Cards overlap the banner, like the website's sections */
+  main{margin-top:-58px;position:relative;z-index:2;padding-bottom:60px}
+  .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;margin-bottom:24px}
+  .card-head{margin-bottom:18px}
+  .card-head h2{color:var(--navy);font-size:24px;line-height:1.2;margin-top:4px}
+  .squiggle{display:block;width:120px;height:10px;margin-top:6px}
+  .card-head p{color:var(--muted);font-size:14px;margin-top:6px}
+
+  /* PIN */
+  .pin-card{max-width:440px;margin:0 auto 24px}
+  label{display:block;font-weight:700;font-size:14px;margin:16px 0 6px;color:var(--navy)}
+  input[type=text],input[type=password],input[type=search]{width:100%;padding:12px 14px;border:1px solid #c6d2e1;border-radius:12px;background:#fff}
+  input:focus{border-color:var(--navy);outline:3px solid rgba(244,196,0,.6);outline-offset:0}
+  .hint{color:var(--muted);font-size:13px;margin-top:5px}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:30px;padding:12px 24px;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+  .btn-primary{background:var(--gold);color:var(--navy2);box-shadow:0 6px 18px rgba(244,196,0,.35)}
+  .btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 24px rgba(244,196,0,.45)}
+  .btn-primary:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
+  .btn-outline{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
+  .btn-danger{background:var(--red);color:#fff}
+  .actions{margin-top:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+
+  .msg{padding:12px 14px;border-radius:12px;margin-top:14px;font-weight:600;font-size:14px}
+  .msg.err{background:var(--red-bg);color:var(--red)}
+
+  /* Upload */
+  .drop{display:flex;flex-direction:column;align-items:center;gap:6px;border:2px dashed #aebcd0;border-radius:var(--radius);padding:30px 20px;text-align:center;background:var(--light);cursor:pointer;transition:border-color .2s,background .2s}
+  .drop:hover,.drop.over{border-color:var(--gold);background:#fffbea}
+  .drop .icon{width:56px;height:56px;border-radius:50%;background:var(--navy);color:var(--gold);display:grid;place-items:center}
+  .drop strong{color:var(--navy);font-family:var(--head);font-size:17px}
+  .drop input{display:none}
+
+  .queue{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;margin-top:16px}
+  .q{position:relative;border-radius:14px;overflow:hidden;background:var(--light);box-shadow:0 4px 12px rgba(6,43,89,.08)}
+  .q img{width:100%;aspect-ratio:1;object-fit:cover}
+  .q .x{position:absolute;top:6px;right:6px;width:28px;height:28px;border-radius:50%;border:0;background:rgba(4,29,60,.75);color:#fff;cursor:pointer;font-size:16px;line-height:1}
+  .q .bar{position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(255,255,255,.6)}
+  .q .bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+  .q.busy .bar i{width:60%;animation:pulse 1.2s ease-in-out infinite}
+  .q.done .bar i{width:100%;background:#17b26a}
+  .q.fail .bar i{width:100%;background:var(--red)}
+  .q .state{position:absolute;left:8px;bottom:12px;font-size:11px;font-weight:800;background:rgba(4,29,60,.8);color:#fff;padding:2px 8px;border-radius:30px}
+  @keyframes pulse{50%{opacity:.45}}
+
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{border:1.5px solid var(--line);background:#fff;color:var(--navy);border-radius:30px;padding:8px 16px;font-weight:700;font-size:14px;cursor:pointer;transition:.2s}
+  .chip:hover{border-color:var(--navy)}
+  .chip[aria-pressed=true],.chip[aria-checked=true]{background:var(--navy);border-color:var(--navy);color:#fff}
+  .chip .n{display:inline-block;min-width:20px;margin-left:6px;padding:0 6px;border-radius:20px;background:rgba(6,43,89,.1);font-size:12px}
+  .chip[aria-pressed=true] .n{background:rgba(255,255,255,.2)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+  /* Photo list */
+  .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:18px}
+  .toolbar input{max-width:260px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+  .photo{border-radius:16px;overflow:hidden;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+  .photo:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .photo .pic{position:relative;aspect-ratio:4/3;background:#e8edf4;overflow:hidden}
+  .photo .pic img{width:100%;height:100%;object-fit:cover}
+  .photo.off .pic img{opacity:.35;filter:grayscale(1)}
+  .photo .status{position:absolute;top:10px;left:10px;font-size:11px;font-weight:800;padding:3px 10px;border-radius:30px;background:var(--green-bg);color:var(--green)}
+  .photo.off .status{background:#fef0c7;color:#7a5200}
+  .photo .info{padding:12px 14px;flex:1}
+  .photo .cap{font-weight:700;color:var(--navy);font-family:var(--head);line-height:1.3}
+  .photo .meta{color:var(--muted);font-size:12px;margin-top:4px}
+  .photo .btns{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+  .photo .btns button{border:0;background:#fff;padding:11px 4px;font-size:13px;font-weight:700;color:var(--navy);cursor:pointer;font-family:var(--head)}
+  .photo .btns button:hover{background:var(--light)}
+  .photo .btns button+button{border-left:1px solid var(--line)}
+  .photo .btns .del{color:var(--red)}
+  .empty{text-align:center;color:var(--muted);padding:30px 10px}
+
+  /* Pop-up boxes */
+  .overlay{position:fixed;inset:0;background:rgba(4,29,60,.6);display:grid;place-items:center;padding:16px;z-index:50;backdrop-filter:blur(3px)}
+  .dialog{background:#fff;border-radius:var(--radius);box-shadow:0 20px 60px rgba(0,0,0,.3);width:min(460px,100%);padding:26px}
+  .dialog h3{color:var(--navy);font-size:20px}
+  .dialog p{color:var(--muted);margin-top:8px}
+  .dialog .actions{justify-content:flex-end}
+
+  .toasts{position:fixed;left:50%;bottom:22px;translate:-50% 0;display:grid;gap:8px;z-index:60;width:min(420px,92%)}
+  .toast{background:var(--navy2);color:#fff;border-left:5px solid var(--gold);border-radius:12px;padding:12px 16px;box-shadow:0 10px 30px rgba(0,0,0,.25);font-weight:600;animation:in .3s ease}
+  .toast.err{border-left-color:#f04438}
+  @keyframes in{from{opacity:0;translate:0 12px}}
+
+  @media(max-width:640px){
+    .row{grid-template-columns:1fr}
+    .card{padding:20px}
+    .brand-sub{display:none}
+    .brand-name{font-size:15px}
+    .toolbar input{max-width:none}
+    .hero-inner{padding:32px 0 84px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<header>
-  <div><small>Fr. Agnel HSS, Pilar</small><h1>Gallery Dashboard</h1></div>
-  <button class="ghost" id="logout" hidden>Lock</button>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <img src="https://fragnelhsspilar.in/images/logo.png" alt="School crest">
+      <div><div class="brand-name">Fr. Agnel Higher Secondary School</div><div class="brand-sub">Pilar, Goa</div></div>
+    </div>
+    <button class="lock" id="lockBtn" type="button" hidden>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Lock
+    </button>
+  </div>
 </header>
-<main>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <span class="badge">Staff only</span>
+    <h1>Gallery <span>Dashboard</span></h1>
+    <p>Add photos to the school website's Gallery, and hide or remove them when needed.</p>
+    <div class="stats" id="stats" hidden>
+      <div class="stat"><strong id="sOn">0</strong><span>On the website</span></div>
+      <div class="stat"><strong id="sOff">0</strong><span>Hidden</span></div>
+      <div class="stat"><strong id="sAll">0</strong><span>Total uploaded</span></div>
+    </div>
+  </div>
+</section>
+
+<main class="container">
 
   <!-- PIN -->
-  <section class="card" id="pinCard">
-    <h2>Enter the PIN</h2>
+  <section class="card pin-card" id="pinCard">
+    <div class="card-head">
+      <span class="eyebrow">Welcome</span>
+      <h2>Enter the PIN</h2>
+      <svg class="squiggle" viewBox="0 0 120 10" aria-hidden="true"><path d="M2 6c12-6 22 6 34 0s22-6 34 0 22 6 34 0 10-4 14-2" fill="none" stroke="#f4c400" stroke-width="3" stroke-linecap="round"/></svg>
+    </div>
     <form id="pinForm">
       <label for="pin">Upload PIN</label>
-      <input type="password" id="pin" inputmode="numeric" autocomplete="current-password" required>
-      <div class="actions"><button class="primary" type="submit" id="pinBtn">Open dashboard</button></div>
+      <input type="password" id="pin" autocomplete="current-password" required>
+      <div class="actions"><button class="btn btn-primary" type="submit" id="pinBtn">Open dashboard</button></div>
       <p class="msg err" id="pinMsg" hidden></p>
     </form>
   </section>
@@ -70,23 +191,28 @@
   <div id="app" hidden>
     <!-- Upload -->
     <section class="card">
-      <h2>Add photos to the website</h2>
+      <div class="card-head">
+        <span class="eyebrow">New photos</span>
+        <h2>Add Photos to the Website</h2>
+        <svg class="squiggle" viewBox="0 0 120 10" aria-hidden="true"><path d="M2 6c12-6 22 6 34 0s22-6 34 0 22 6 34 0 10-4 14-2" fill="none" stroke="#f4c400" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
       <form id="upForm">
-        <div class="drop" id="drop" tabindex="0" role="button" aria-label="Choose photos">
+        <div class="drop" id="drop" tabindex="0" role="button" aria-label="Choose photos to upload">
+          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
           <strong>Tap to choose photos</strong>
-          <p class="hint">or drag them here. You can pick several at once. They are resized automatically.</p>
+          <span class="hint">or drag them here. Pick as many as you like; they're resized automatically.</span>
           <input type="file" id="files" accept="image/*" multiple>
         </div>
-        <div class="previews" id="previews"></div>
+        <div class="queue" id="queue"></div>
 
         <label for="caption">Caption</label>
         <input type="text" id="caption" maxlength="120" placeholder="For example: Annual Day 2026" required>
-        <p class="hint">Shown under the photo. Used for every photo chosen above.</p>
+        <p class="hint">Shown under the photo on the website. Used for every photo chosen above.</p>
 
         <div class="row">
           <div>
-            <label for="cat">Category</label>
-            <select id="cat" required></select>
+            <label id="catLabel">Category</label>
+            <div class="chips" id="catChips" role="radiogroup" aria-labelledby="catLabel"></div>
           </div>
           <div>
             <label for="by">Your name (optional)</label>
@@ -95,140 +221,269 @@
         </div>
 
         <div class="actions">
-          <button class="primary" type="submit" id="upBtn" disabled>Upload</button>
+          <button class="btn btn-primary" type="submit" id="upBtn" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>
+            <span id="upText">Upload</span>
+          </button>
           <span class="hint" id="progress"></span>
         </div>
-        <p class="msg" id="upMsg" hidden></p>
       </form>
     </section>
 
     <!-- List -->
     <section class="card">
-      <h2>Photos on the website</h2>
-      <p class="hint" style="margin:-6px 0 14px">Hidden photos stay here but are not shown on the website. Changes appear on the website within about 5 minutes.</p>
-      <div class="grid" id="list"><p class="empty">Loading...</p></div>
+      <div class="card-head">
+        <span class="eyebrow">Manage</span>
+        <h2>Photos on the Website</h2>
+        <svg class="squiggle" viewBox="0 0 120 10" aria-hidden="true"><path d="M2 6c12-6 22 6 34 0s22-6 34 0 22 6 34 0 10-4 14-2" fill="none" stroke="#f4c400" stroke-width="3" stroke-linecap="round"/></svg>
+        <p>Hidden photos stay here but don't show on the website. Changes reach the website within about 5 minutes.</p>
+      </div>
+      <div class="toolbar">
+        <div class="chips" id="tabs" role="toolbar" aria-label="Filter by category"></div>
+        <input type="search" id="search" placeholder="Search captions" aria-label="Search captions">
+      </div>
+      <div class="grid" id="list"><p class="empty">Loading photos...</p></div>
     </section>
   </div>
 </main>
 
+<!-- Edit box -->
+<div class="overlay" id="editBox" hidden>
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="editTitle">
+    <h3 id="editTitle">Edit photo</h3>
+    <form id="editForm">
+      <label for="editCap">Caption</label>
+      <input type="text" id="editCap" maxlength="120" required>
+      <label id="editCatLabel">Category</label>
+      <div class="chips" id="editChips" role="radiogroup" aria-labelledby="editCatLabel"></div>
+      <div class="actions">
+        <button class="btn btn-outline" type="button" data-close>Cancel</button>
+        <button class="btn btn-primary" type="submit" id="editSave">Save changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Delete box -->
+<div class="overlay" id="delBox" hidden>
+  <div class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="delTitle" aria-describedby="delText">
+    <h3 id="delTitle">Delete this photo?</h3>
+    <p id="delText"></p>
+    <div class="actions">
+      <button class="btn btn-outline" type="button" data-close>Cancel</button>
+      <button class="btn btn-danger" type="button" id="delYes">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
 <script>
   const $ = id => document.getElementById(id);
-  let PIN = '';
-  let chosen = [];
+  let PIN = '', CATS = {}, rows = [], queue = [], uploadCat = '', tab = 'all', editing = null, deleting = null;
 
   const run = (fn, ...args) => new Promise((resolve, reject) =>
-    google.script.run.withSuccessHandler(resolve).withFailureHandler(e => reject(e && e.message ? e : new Error(String(e))))[fn](...args));
-  const show = (el, text, ok) => { el.textContent = text; el.className = 'msg ' + (ok ? 'ok' : 'err'); el.hidden = false; };
-  const img = id => 'https://lh3.googleusercontent.com/d/' + id + '=w600';
+    google.script.run.withSuccessHandler(resolve)
+      .withFailureHandler(e => reject(e && e.message ? e : new Error(String(e))))[fn](...args));
+  const thumb = (id, w) => 'https://lh3.googleusercontent.com/d/' + id + '=w' + (w || 600);
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const store = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} } };
+
+  function toast(text, bad) {
+    const t = el('div', 'toast' + (bad ? ' err' : ''), text);
+    $('toasts').appendChild(t);
+    setTimeout(() => t.remove(), 4200);
+  }
+
+  /* Category chips that act like radio buttons */
+  function radioChips(box, value, onPick) {
+    box.innerHTML = '';
+    Object.entries(CATS).forEach(([k, v]) => {
+      const b = el('button', 'chip', v);
+      b.type = 'button'; b.setAttribute('role', 'radio'); b.setAttribute('aria-checked', String(k === value)); b.dataset.k = k;
+      b.onclick = () => { box.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-checked', String(c === b))); onPick(k); };
+      box.appendChild(b);
+    });
+  }
 
   /* ---- PIN ---- */
   async function openWith(pin) {
     const r = await run('checkPin', pin);
-    PIN = pin;
+    PIN = pin; CATS = r.categories;
     try { sessionStorage.setItem('gd-pin', pin); } catch (e) {}
-    $('cat').innerHTML = '<option value="">Choose a category</option>' +
-      Object.entries(r.categories).map(([k, v]) => '<option value="' + k + '">' + v + '</option>').join('');
-    $('pinCard').hidden = true; $('app').hidden = false; $('logout').hidden = false;
+    radioChips($('catChips'), uploadCat, k => { uploadCat = k; });
+    $('by').value = store.get('gd-name') || '';
+    $('pinCard').hidden = true; $('app').hidden = false; $('lockBtn').hidden = false; $('stats').hidden = false;
     loadList();
   }
   $('pinForm').addEventListener('submit', async e => {
     e.preventDefault();
     $('pinBtn').disabled = true; $('pinMsg').hidden = true;
     try { await openWith($('pin').value.trim()); }
-    catch (err) { show($('pinMsg'), err.message, false); }
+    catch (err) { $('pinMsg').textContent = err.message; $('pinMsg').hidden = false; }
     $('pinBtn').disabled = false;
   });
-  $('logout').addEventListener('click', () => {
-    try { sessionStorage.removeItem('gd-pin'); } catch (e) {}
-    location.reload();
-  });
+  $('lockBtn').onclick = () => { try { sessionStorage.removeItem('gd-pin'); } catch (e) {} location.reload(); };
   try { const saved = sessionStorage.getItem('gd-pin'); if (saved) openWith(saved).catch(() => {}); } catch (e) {}
 
   /* ---- Choosing photos ---- */
-  function choose(list) {
-    chosen = [...list].filter(f => /^image\//.test(f.type));
-    $('previews').innerHTML = '';
-    chosen.forEach(f => {
-      const i = document.createElement('img');
-      i.src = URL.createObjectURL(f); i.alt = '';
-      $('previews').appendChild(i);
+  function addFiles(list) {
+    [...list].filter(f => /^image\//.test(f.type)).forEach(f => {
+      const item = { file: f, url: URL.createObjectURL(f), state: 'ready' };
+      queue.push(item);
     });
-    $('upBtn').disabled = !chosen.length;
-    $('upBtn').textContent = chosen.length > 1 ? 'Upload ' + chosen.length + ' photos' : 'Upload';
+    drawQueue();
   }
-  $('drop').addEventListener('click', () => $('files').click());
-  $('drop').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('files').click(); } });
-  $('files').addEventListener('change', e => choose(e.target.files));
-  ['dragover', 'dragenter'].forEach(t => $('drop').addEventListener(t, e => { e.preventDefault(); }));
-  $('drop').addEventListener('drop', e => { e.preventDefault(); choose(e.dataTransfer.files); });
+  function drawQueue() {
+    const box = $('queue'); box.innerHTML = '';
+    queue.forEach((q, i) => {
+      const d = el('div', 'q' + (q.state === 'busy' ? ' busy' : q.state === 'done' ? ' done' : q.state === 'fail' ? ' fail' : ''));
+      const im = el('img'); im.src = q.url; im.alt = '';
+      d.appendChild(im);
+      if (q.state === 'ready') {
+        const x = el('button', 'x', '×'); x.type = 'button'; x.setAttribute('aria-label', 'Remove ' + q.file.name);
+        x.onclick = () => { queue.splice(i, 1); drawQueue(); };
+        d.appendChild(x);
+      } else {
+        d.appendChild(el('span', 'state', q.state === 'busy' ? 'Uploading' : q.state === 'done' ? 'Done ✓' : 'Failed'));
+      }
+      const bar = el('div', 'bar'); bar.appendChild(el('i')); d.appendChild(bar);
+      box.appendChild(d);
+    });
+    const ready = queue.filter(q => q.state === 'ready').length;
+    $('upBtn').disabled = !ready;
+    $('upText').textContent = ready > 1 ? 'Upload ' + ready + ' photos' : 'Upload';
+  }
+  const drop = $('drop');
+  drop.onclick = () => $('files').click();
+  drop.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('files').click(); } };
+  $('files').onchange = e => { addFiles(e.target.files); e.target.value = ''; };
+  ['dragover', 'dragenter'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(t => drop.addEventListener(t, () => drop.classList.remove('over')));
+  drop.addEventListener('drop', e => { e.preventDefault(); addFiles(e.dataTransfer.files); });
 
-  /* Resize to at most 1600px on the long side and save as JPEG, so uploads are small and the site stays fast */
+  /* Resize to at most 1600px on the long side and save as JPEG */
   async function resize(file) {
     let src;
     try { src = await createImageBitmap(file, { imageOrientation: 'from-image' }); }
     catch (e) {
-      src = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error('Could not read ' + file.name)); i.src = URL.createObjectURL(file); });
+      src = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error('Could not read this photo')); i.src = URL.createObjectURL(file); });
     }
-    const w0 = src.width, h0 = src.height, k = Math.min(1, 1600 / Math.max(w0, h0));
-    const w = Math.round(w0 * k), h = Math.round(h0 * k);
+    const k = Math.min(1, 1600 / Math.max(src.width, src.height));
+    const w = Math.round(src.width * k), h = Math.round(src.height * k);
     const c = document.createElement('canvas'); c.width = w; c.height = h;
     c.getContext('2d').drawImage(src, 0, 0, w, h);
-    const dataUrl = c.toDataURL('image/jpeg', 0.85);
-    return { base64: dataUrl.split(',')[1], w, h };
+    return { base64: c.toDataURL('image/jpeg', 0.85).split(',')[1], w, h };
   }
 
   /* ---- Upload ---- */
   $('upForm').addEventListener('submit', async e => {
     e.preventDefault();
-    const caption = $('caption').value.trim(), cat = $('cat').value, by = $('by').value.trim();
-    if (!chosen.length) return;
-    if (!caption || !cat) { show($('upMsg'), 'Please add a caption and choose a category.', false); return; }
-    $('upBtn').disabled = true; $('upMsg').hidden = true;
-    let done = 0, failed = [];
-    for (const f of chosen) {
-      $('progress').textContent = 'Uploading ' + (done + failed.length + 1) + ' of ' + chosen.length + '...';
-      try { const r = await resize(f); await run('uploadPhoto', PIN, { base64: r.base64, w: r.w, h: r.h, caption, cat, by }); done++; }
-      catch (err) { failed.push(f.name + ': ' + err.message); }
+    const caption = $('caption').value.trim(), by = $('by').value.trim();
+    const todo = queue.filter(q => q.state === 'ready');
+    if (!todo.length) return;
+    if (!caption) { toast('Please type a caption.', true); $('caption').focus(); return; }
+    if (!uploadCat) { toast('Please choose a category.', true); return; }
+    store.set('gd-name', by);
+    $('upBtn').disabled = true;
+    let done = 0, failed = 0;
+    for (const q of todo) {
+      q.state = 'busy'; drawQueue();
+      $('progress').textContent = 'Uploading ' + (done + failed + 1) + ' of ' + todo.length + '...';
+      try { const r = await resize(q.file); await run('uploadPhoto', PIN, { base64: r.base64, w: r.w, h: r.h, caption, cat: uploadCat, by }); q.state = 'done'; done++; }
+      catch (err) { q.state = 'fail'; failed++; toast(q.file.name + ': ' + err.message, true); }
+      drawQueue();
     }
     $('progress').textContent = '';
-    if (failed.length) show($('upMsg'), done + ' uploaded. Not uploaded: ' + failed.join('; '), false);
-    else show($('upMsg'), done === 1 ? 'Photo uploaded. It will appear on the website within about 5 minutes.' : done + ' photos uploaded. They will appear on the website within about 5 minutes.', true);
-    $('files').value = ''; choose([]); $('caption').value = '';
+    if (done) toast(done === 1 ? 'Photo uploaded! It will be on the website within about 5 minutes.' : done + ' photos uploaded! They will be on the website within about 5 minutes.');
+    setTimeout(() => { queue = queue.filter(q => q.state !== 'done'); drawQueue(); }, 1800);
+    if (!failed) $('caption').value = '';
     loadList();
   });
 
   /* ---- List ---- */
   async function loadList() {
-    const list = $('list');
-    try {
-      const rows = await run('listPhotos', PIN);
-      list.innerHTML = '';
-      if (!rows.length) { list.innerHTML = '<p class="empty">No photos uploaded yet.</p>'; return; }
-      rows.forEach(r => list.appendChild(card(r)));
-    } catch (err) { list.innerHTML = ''; const p = document.createElement('p'); p.className = 'msg err'; p.textContent = err.message; list.appendChild(p); }
+    try { rows = await run('listPhotos', PIN); drawList(); }
+    catch (err) { $('list').innerHTML = ''; const p = el('p', 'msg err', err.message); $('list').appendChild(p); }
   }
+  function drawTabs() {
+    const box = $('tabs'); box.innerHTML = '';
+    [['all', 'All']].concat(Object.entries(CATS)).forEach(([k, v]) => {
+      const n = k === 'all' ? rows.length : rows.filter(r => r.cat === k).length;
+      const b = el('button', 'chip', v); b.type = 'button'; b.setAttribute('aria-pressed', String(k === tab));
+      b.appendChild(el('span', 'n', String(n)));
+      b.onclick = () => { tab = k; drawList(); };
+      box.appendChild(b);
+    });
+  }
+  function drawList() {
+    const on = rows.filter(r => r.visible).length;
+    $('sOn').textContent = on; $('sOff').textContent = rows.length - on; $('sAll').textContent = rows.length;
+    drawTabs();
+    const q = $('search').value.trim().toLowerCase();
+    const shown = rows.filter(r => (tab === 'all' || r.cat === tab) && (!q || r.caption.toLowerCase().includes(q)));
+    const list = $('list'); list.innerHTML = '';
+    if (!rows.length) { list.appendChild(el('p', 'empty', 'No photos uploaded yet. Add your first ones above.')); return; }
+    if (!shown.length) { list.appendChild(el('p', 'empty', 'No photos match.')); return; }
+    shown.forEach(r => list.appendChild(card(r)));
+  }
+  $('search').oninput = drawList;
+
   function card(r) {
-    const d = document.createElement('div');
-    d.className = 'photo' + (r.visible ? '' : ' hidden');
-    const i = document.createElement('img'); i.src = img(r.id); i.alt = r.caption; i.loading = 'lazy';
-    const info = document.createElement('div'); info.className = 'info';
-    const cap = document.createElement('div'); cap.className = 'cap'; cap.textContent = r.caption;
-    const meta = document.createElement('div'); meta.className = 'meta';
-    meta.textContent = r.date + (r.by ? ' · ' + r.by : '') + ' · ' + r.cat.charAt(0).toUpperCase() + r.cat.slice(1);
-    const tag = document.createElement('span'); tag.className = 'tag' + (r.visible ? '' : ' off'); tag.textContent = r.visible ? 'On the website' : 'Hidden';
-    info.append(cap, meta, tag);
-    const btns = document.createElement('div'); btns.className = 'btns';
-    const t = document.createElement('button'); t.type = 'button'; t.textContent = r.visible ? 'Hide' : 'Show';
-    t.onclick = async () => { t.disabled = true; try { await run('setVisible', PIN, r.id, !r.visible); loadList(); } catch (err) { alert(err.message); t.disabled = false; } };
-    const del = document.createElement('button'); del.type = 'button'; del.textContent = 'Delete';
-    del.onclick = async () => {
-      if (!confirm('Delete "' + r.caption + '"? It will be removed from the website and moved to the Drive bin.')) return;
-      del.disabled = true; try { await run('deletePhoto', PIN, r.id); loadList(); } catch (err) { alert(err.message); del.disabled = false; }
+    const d = el('article', 'photo' + (r.visible ? '' : ' off'));
+    const pic = el('div', 'pic');
+    const im = el('img'); im.src = thumb(r.id); im.alt = r.caption; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer';
+    pic.append(im, el('span', 'status', r.visible ? 'On the website' : 'Hidden'));
+    const info = el('div', 'info');
+    info.append(el('div', 'cap', r.caption), el('div', 'meta', [CATS[r.cat] || r.cat, r.date, r.by].filter(Boolean).join(' · ')));
+    const btns = el('div', 'btns');
+    const edit = el('button', '', 'Edit'); edit.type = 'button'; edit.onclick = () => openEdit(r);
+    const vis = el('button', '', r.visible ? 'Hide' : 'Show'); vis.type = 'button';
+    vis.onclick = async () => {
+      vis.disabled = true;
+      try { await run('setVisible', PIN, r.id, !r.visible); toast(r.visible ? 'Photo hidden from the website.' : 'Photo is back on the website.'); loadList(); }
+      catch (err) { toast(err.message, true); vis.disabled = false; }
     };
-    btns.append(t, del);
-    d.append(i, info, btns);
+    const del = el('button', 'del', 'Delete'); del.type = 'button'; del.onclick = () => openDelete(r);
+    btns.append(edit, vis, del);
+    d.append(pic, info, btns);
     return d;
   }
+
+  /* ---- Pop-up boxes ---- */
+  let lastFocus = null;
+  function openBox(box, focusEl) { lastFocus = document.activeElement; box.hidden = false; (focusEl || box.querySelector('button')).focus(); }
+  function closeBox(box) { box.hidden = true; if (lastFocus) lastFocus.focus(); }
+  document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => closeBox(b.closest('.overlay')));
+  document.querySelectorAll('.overlay').forEach(o => o.addEventListener('click', e => { if (e.target === o) closeBox(o); }));
+  addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.overlay:not([hidden])').forEach(closeBox); });
+
+  let editCat = '';
+  function openEdit(r) {
+    editing = r; editCat = r.cat;
+    $('editCap').value = r.caption;
+    radioChips($('editChips'), r.cat, k => { editCat = k; });
+    openBox($('editBox'), $('editCap'));
+  }
+  $('editForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    $('editSave').disabled = true;
+    try { await run('updatePhoto', PIN, editing.id, $('editCap').value.trim(), editCat); toast('Changes saved.'); closeBox($('editBox')); loadList(); }
+    catch (err) { toast(err.message, true); }
+    $('editSave').disabled = false;
+  });
+
+  function openDelete(r) {
+    deleting = r;
+    $('delText').textContent = '"' + r.caption + '" will be removed from the website and moved to the Google Drive bin.';
+    openBox($('delBox'));
+  }
+  $('delYes').onclick = async () => {
+    $('delYes').disabled = true;
+    try { await run('deletePhoto', PIN, deleting.id); toast('Photo deleted.'); closeBox($('delBox')); loadList(); }
+    catch (err) { toast(err.message, true); }
+    $('delYes').disabled = false;
+  };
 </script>
 </body>
 </html>
