@@ -338,11 +338,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
   /* Gallery category filter */
   const filterBtns = document.querySelectorAll('.gallery-filters button');
-  const gItems = document.querySelectorAll('#gallery-showcase .gallery-item');
   filterBtns.forEach(btn => btn.addEventListener('click', () => {
     const f = btn.dataset.filter;
     filterBtns.forEach(b => b.classList.toggle('active', b === btn));
-    gItems.forEach((it, n) => {
+    /* looked up on each click so photos added later (gallery-uploads.js) are included */
+    document.querySelectorAll('#gallery-showcase .gallery-item').forEach((it, n) => {
       const show = f === 'all' || it.dataset.cat === f;
       it.classList.toggle('hide', !show);
       it.classList.remove('pop');
@@ -362,14 +362,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   lb.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">✕</button><figure><img alt=""><figcaption></figcaption></figure>';
   document.body.appendChild(lb);
   const lbImg = lb.querySelector('img'), lbCap = lb.querySelector('figcaption');
+  lbImg.referrerPolicy = 'no-referrer'; /* needed for uploaded photos stored in Google Drive */
   function closeLb(){ lb.classList.remove('open'); }
-  document.querySelectorAll('.gallery-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const img = item.querySelector('img'), label = item.querySelector('.gallery-label');
-      lbImg.src = img.src; lbImg.alt = img.alt;
-      lbCap.textContent = label ? label.textContent : '';
-      lb.classList.add('open');
-    });
+  /* one listener for all photos, including ones added after the page loads */
+  document.addEventListener('click', e => {
+    const item = e.target.closest('.gallery-item');
+    if (!item) return;
+    const img = item.querySelector('img'), label = item.querySelector('.gallery-label');
+    if (!img) return;
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    lbCap.textContent = label ? label.textContent : '';
+    lb.classList.add('open');
   });
   lb.addEventListener('click', e => { if(e.target !== lbImg) closeLb(); });
   addEventListener('keydown', e => { if(e.key === 'Escape') closeLb(); });
