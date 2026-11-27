@@ -58,9 +58,9 @@ const SCHOOL = {
 
 /* Courses, listed on the Academics page */
 const COURSES = [
-  ['stream-arts', 'Arts Stream', 'Std XI-XII Arts: Economics, Political Science, Psychology, History and Sociology, with English and Hindi/Konkani.'],
-  ['stream-commerce', 'Commerce Stream', 'Std XI-XII Commerce: Economics, Secretarial Practice, Accountancy and Business Studies.'],
-  ['stream-science', 'Science Stream', 'Std XI-XII Science: Physics, Chemistry, Biology and Mathematics.'],
+  ['stream-arts', 'Arts Stream', 'Std XI-XII Arts: Economics, Political Science, Psychology, History and Sociology, with English and Hindi/Konkani. NSQF Electronics or Apparel may replace Political Science.'],
+  ['stream-commerce', 'Commerce Stream', 'Std XI-XII Commerce: Economics, Secretarial Practice, Accountancy and Business Studies. NSQF Electronics or Apparel may replace Secretarial Practice.'],
+  ['stream-science', 'Science Stream', 'Std XI-XII Science: Physics, Chemistry, Biology and Mathematics. NSQF Electronics may replace Biology.'],
   ['stream-aet', 'Auto Engineering Technology', 'Vocational course in auto servicing, automobile engineering and auto transmission, with on-the-job training.'],
   ['stream-ct', 'Computer Technique', 'Vocational course in computer organisation, operating systems, software applications and web technology.'],
   ['stream-insurance', 'Business and Insurance', 'Vocational course in life insurance, general insurance, accountancy and computer applications.'],
