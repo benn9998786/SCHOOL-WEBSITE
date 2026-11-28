@@ -6,7 +6,9 @@
  * don't count as duplicates. Change it here if the domain ever changes.
  */
 const SITE_URL = 'https://fragnelhsspilar.in';
-const NAME = 'Fr. Agnel Higher Secondary School, Pilar';
+/* The site name Google shows above search results, and a shorter backup it can use instead */
+const NAME = 'Fr. Agnel Higher Secondary School, Pilar, Goa';
+const SHORT_NAME = 'Fr. Agnel HSS, Pilar';
 
 const abs = rel => SITE_URL + '/' + rel.replace(/^\//, '');
 const pageUrl = file => file === 'index.html' ? SITE_URL + '/' : abs(file);
@@ -90,7 +92,7 @@ function jsonLd(p) {
   const url = pageUrl(p.file);
   const graph = [SCHOOL];
   if (p.key === 'home') {
-    graph.push({ '@type': 'WebSite', '@id': SITE_URL + '/#website', url: SITE_URL + '/', name: NAME, inLanguage: 'en-IN', publisher: { '@id': SCHOOL['@id'] } });
+    graph.push({ '@type': 'WebSite', '@id': SITE_URL + '/#website', url: SITE_URL + '/', name: NAME, alternateName: [SHORT_NAME], inLanguage: 'en-IN', publisher: { '@id': SCHOOL['@id'] } });
   }
   graph.push({
     '@type': p.key === 'contact' ? 'ContactPage' : p.key === 'about' ? 'AboutPage' : p.key === 'gallery' ? 'CollectionPage' : 'WebPage',
